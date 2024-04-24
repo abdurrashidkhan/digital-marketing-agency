@@ -1,6 +1,6 @@
 export default function Navbar() {
   return (
-    <div className="navbar bg-base-100 border-b border-[#1d2553b0] shadow-2xl">
+    <div className="navbar bg-transparent border-b border-[#1d2553b0] shadow-2xl fixed z-[999999]">
       <div className="container mx-auto px-2">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">daisyUI</a>
