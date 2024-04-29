@@ -44,3 +44,9 @@ body {
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
 }
+/* dark mode  */
+.dark-mode {
+  background-color: #111;
+  color: #eee;
+  transition: all 0.5s ease;
+}
