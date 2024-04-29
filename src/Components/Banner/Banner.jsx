@@ -22,7 +22,7 @@ export default function Banner() {
                   </Link>
                 </div>
                 <div className="">
-                  <h1 className="text-[20px] font-semibold sm:text-3xl lg:text-5xl  tracking-[2px] py-8">
+                  <h1 className="text-[20px] font-semibold sm:text-3xl lg:text-4xl  tracking-[2px] py-8">
                     We make strategies design & Development{" "}
                   </h1>
                   <p className="text-[18px] capitalize">
