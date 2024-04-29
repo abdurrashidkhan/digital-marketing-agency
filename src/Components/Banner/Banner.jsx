@@ -7,7 +7,7 @@ import BannerPhotos from "/src/images/3.png";
 export default function Banner() {
   return (
     <main>
-      <div className="container mx-auto  py-0 w-[100%] h-[100vh] relative overflow-hidden">
+      <div className="container mx-auto  py-0 w-[100%] h-[100vh] relative overflow-hidden z-[99]">
         <div className="main">
           <div className="banner_center top-[40%]">
             <div className="flex flex-col-reverse sm:flex-row gap-5 items-center justify-items-end sm:px-4">

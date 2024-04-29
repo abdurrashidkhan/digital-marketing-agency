@@ -30,7 +30,7 @@
     rgba(25, 0, 255, 0.884),
     rgba(248, 35, 255, 0.726),
     rgba(248, 35, 255, 0.726)
-  );
+  ) !important;
   width: 300px;
   height: 350px;
   backdrop-filter: blur(50px);
@@ -39,5 +39,5 @@
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
-  z-index: -11;
+  z-index: -1;
 }
