@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa6";
 import "./style.css";
-import BannerPhotos from "/src/images/3.png";
+import BannerPhotos from "/src/images/hero-banner-image.svg";
 
 export default function Banner() {
   return (
@@ -22,16 +22,21 @@ export default function Banner() {
                   </Link>
                 </div>
                 <div className="">
-                  <h1 className="text-[20px] font-semibold sm:text-3xl lg:text-4xl  tracking-[2px] py-8">
-                    We make strategies design & Development{" "}
+                  <h1 className="text-[17px] font-semibold  sm:text-xl lg:text-2xl  tracking-[2px]  capitalize py-8">
+                    SEO, Affiliate Marketing, and More. Elevate Your Online
+                    Presence Today...!
                   </h1>
-                  <p className="text-[18px] capitalize">
-                    proper business solution for your business strategy and
-                    corporation.
+                  <p className="text-sm sm:text-[15px]  tracking-[1px] capitalize">
+                    E-Merge Marketing: Where Digital Innovation Meets Market
+                    Evolution. We specialize in crafting tailored digital
+                    strategies to elevate your brand&apos;s online presence,
+                    drive engagement, and maximize ROI. Let&apos;s merge
+                    creativity and technology to transform your digital
+                    landscape.
                   </p>
                 </div>
                 <div className="my-8">
-                  <button className=" bg-[#3C71FF] text-xl px-4 py-2 rounded shadow-2xl font-sans tracking-[2px]">
+                  <button className=" bg-[#3C71FF] text-xl px-4 py-2 rounded shadow-2xl font-sans tracking-[1px] ease-in-out duration-500 hover:px-5">
                     <div className="flex items-center gap-2 ">
                       <span className="text-[#fff]">
                         Let&apos;s get started
@@ -47,7 +52,7 @@ export default function Banner() {
               <div className="">
                 <Image
                   loading="lazy"
-                  placeholder="blur"
+                  // placeholder="blur"
                   src={BannerPhotos}
                   width={500}
                   height={500}
