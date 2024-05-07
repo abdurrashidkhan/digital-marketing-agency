@@ -66,7 +66,6 @@ export default function Banner() {
           {/* let circle bluer   */}
           <div className="" id="banner_circle_bluer_right"></div>
           {/* right circle bluer   */}
-          <div className=""></div>
         </div>
       </div>
     </main>

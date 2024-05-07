@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import promotion from "../../images/services/promotion.gif";
-
+import "./style.css";
 export default function Services() {
   return (
-    <section className="container mx-auto px-2 py-5">
-      <div className="">
+    <section className="">
+      <div className="container mx-auto  py-0 w-[100%] h-[100vh]  overflow-hidden z-[99] relative">
+      <div className="main">
         {/* services title */}
         <div className="">
           <div className="text-center">
@@ -250,6 +251,9 @@ export default function Services() {
             </div>
           </div>
         </div>
+      </div>
+      {/*  */}
+      <div id="services_blur_color"></div>
       </div>
     </section>
   );
