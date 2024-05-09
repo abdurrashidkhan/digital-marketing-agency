@@ -1,6 +1,6 @@
 export default function workingProcess() {
   return (
-    <section className="container mx-auto px-2 py-14 h-auto dark:bg-[#122033] dark:text-[#fff] bg-[#fff] text-[#000] ease-in-out duration-1000">
+    <section className="container mx-auto px-2 py-14 mb-8 h-auto dark:bg-[#122033] dark:text-[#fff] bg-[#fff] text-[#000] ease-in-out duration-1000">
       <div className="text-center py-8">
         <p className="text-[#20b820] text-base">How we do it__</p>
         <h1 className="text-2xl py-2">Our Working Process..</h1>
