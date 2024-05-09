@@ -18,7 +18,7 @@ export default function About() {
               business
             </div>
             <div className="mt-5">
-              <button className="flex items-center gap-3 bg-[#33ce33] px-5 py-1 rounded shadow-2xl  dark:text-[#fff] hover:bg-[#2ab12a] duration-500 ease-in-out">
+              <button className="flex items-center gap-3 bg-[#33ce33] px-5 py-1 rounded shadow-2xl  text-[#fff] hover:bg-[#2ab12a] duration-500 ease-in-out">
                 <span>Let&apos;s Chat</span>
                 <span>
                   {" "}
