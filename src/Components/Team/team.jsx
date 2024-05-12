@@ -19,7 +19,7 @@ export default function Team() {
               />
             </div>
             <div className="">
-              <p className="text-[#20b820]">Our Team__</p>
+              <p className="text-[#20b820] font-semibold">Our Team__</p>
               <h1 className="capitalize text-xl sm:text-lg md:text-xl lg:text-2xl font-semibold py-3 dark:text-[#fff] text-[#444444] hvf-dom-checked ">
                 know more about team <br />
                 e-Merge Digital marketing agency.

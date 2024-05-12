@@ -6,7 +6,7 @@ export default function Projects() {
       <div className="container mx-auto px-2 py-10">
         <div className="">
           <div className="text-center">
-            <p className="text-[#20b820]">Our Prevues Projects__</p>
+            <p className="text-[#20b820] font-semibold">Our Prevues Projects__</p>
             <h1 className="capitalize text-xl sm:text-lg md:text-xl lg:text-2xl font-semibold py-3 dark:text-[#fff] text-[#444444] hvf-dom-checked ">Check Our Awesome latest Projects</h1>
             <p className="">Unlock Your Business Potential with Comprehensive Digital Marketing Solutions! Elevate Your Brand, Increase Visibility, and Drive Sales with Our Expert Services Today!</p>
           </div>

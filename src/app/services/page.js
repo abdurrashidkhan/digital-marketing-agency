@@ -10,7 +10,8 @@ export default function Services() {
         {/* services title */}
         <div className="">
           <div className="text-center">
-            <h1 className="text-2xl font-semibold tracking-[1px] py-1">
+            <p className="text-[#20b820] text-base font-semibold">What we do__</p>
+            <h1 className="text-2xl font-semibold tracking-[1px] py-1 ">
               Our Services
             </h1>
             <h3 className="text-base py-3 leading-[25px] tracking-[1px] ">

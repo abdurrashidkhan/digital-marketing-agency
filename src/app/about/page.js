@@ -7,7 +7,7 @@ export default function About() {
         <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6 py-4">
           <div className="w-full h-auto">
             <div className="">
-              <p className="text-[#33ce33] text-base">Why choose us...?</p>
+              <p className="text-[#33ce33] text-base font-semibold">Why choose us...?</p>
             </div>
             <div className="">
               <h1 className="text-xl sm:text-2xl font-semibold py-3 dark:text-[#fff] text-[#444444]">Experienced creative and helpful</h1>
