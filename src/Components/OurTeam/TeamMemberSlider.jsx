@@ -62,7 +62,7 @@ export default function TeamMemberSlider() {
         >
           {teamMeat.map((t) => (
             <SwiperSlide key={t.img}>
-              <div className="bg-[#fff] shadow-2xl">
+              <div className="bg-[#fff] dark:bg-[#122033] shadow-2xl">
                 <div className="">
                   <Image
                     className="mx-auto rounded-t shadow-2xl"
