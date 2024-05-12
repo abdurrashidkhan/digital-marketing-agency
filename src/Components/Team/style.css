@@ -1,0 +1,23 @@
+#team_circle_bluer_right {
+  position: absolute;
+  top: 20%;
+  right: 0%;
+
+  /* background-image: linear-gradient(red, yellow, green); */
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 255, 0.699),
+    rgba(25, 0, 255, 0.884),
+    rgba(248, 35, 255, 0.726),
+    rgba(248, 35, 255, 0.726)
+  ) !important;
+  width: 200px;
+  height: 200px;
+  backdrop-filter: blur(50px);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  z-index: -1;
+}

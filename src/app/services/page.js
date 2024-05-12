@@ -5,7 +5,7 @@ import "./style.css";
 export default function Services() {
   return (
     <section className="">
-      <div className="container mx-auto  py-0 w-[100%] h-[100vh]  overflow-hidden z-[99] relative">
+      <div className="container mx-auto  py-0 w-[100%]    overflow-hidden z-[99] relative">
       <div className="main">
         {/* services title */}
         <div className="">
@@ -253,7 +253,7 @@ export default function Services() {
         </div>
       </div>
       {/*  */}
-      <div id="services_blur_color"></div>
+      {/* <div id="services_blur_color"></div> */}
       </div>
     </section>
   );
