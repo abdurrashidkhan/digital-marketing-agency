@@ -1,4 +1,5 @@
 import Banner from "@/Components/Banner/Banner";
+import Footer from "@/Components/Footer/Footer";
 import OurClient from "@/Components/OurClient/OurClient";
 import OurTeam from "@/Components/OurTeam/OurTeam";
 import Pricing from "@/Components/Pricing/Pricing";
@@ -22,6 +23,7 @@ export default function Home() {
       <Pricing/>
       <OurClient />
       <Subscribe/>
+      <Footer/>
     </>
   );
 }
