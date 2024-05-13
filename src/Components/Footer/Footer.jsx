@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="dark:bg-[#101C2C] bg-[#e4e4e4] py-10">
       <div className="container mx-auto px-2 ">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 items-center justify-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-start md:justify-items-center">
           <div className="">
             <h1 className="text-2xl font-semibold">E-merge Marketing</h1>
             <p className="text-base py-4">

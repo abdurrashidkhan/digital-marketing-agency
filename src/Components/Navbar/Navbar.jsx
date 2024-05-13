@@ -2,7 +2,7 @@ import Link from "next/link";
 import DarkMode from "../darkMode/darkMode";
 export default function Navbar() {
   return (
-    <div className="navbar bg-[transparent] border-b border-[#603bf65e] shadow-2xl fixed z-[9999] py-0">
+    <div className="navbar bg-[#fff] dark:bg-[#122033] border-b border-[#603bf65e] shadow-2xl fixed z-[9999] py-0">
       <div className="container mx-auto px-2">
         <div className="navbar">
           <div className="navbar-start">
