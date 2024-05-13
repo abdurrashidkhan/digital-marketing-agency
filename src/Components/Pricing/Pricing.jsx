@@ -130,7 +130,7 @@ export default function Pricing() {
                   </a>
                 </div>
               </div>
-              <div className="relative flex flex-col p-8 bg-blue-600 rounded shadow-2xl">
+              <div className="relative flex flex-col p-8 bg-blue-600 rounded shadow-2xl text-[#000]">
                 <div className="relative flex-1">
                   <h3 className="text-xl font-semibold text-white">Startup</h3>
 
