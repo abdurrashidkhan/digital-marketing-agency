@@ -63,7 +63,7 @@ export default function Footer() {
               <input
                 type="text"
                 placeholder="Enter your feedback"
-                className="p-2 rounded dark:bg-[#172a46] bg-[#c2c0c0] w-full focus:outline-none placeholder:text-[#333333] dark:placeholder:text-[#fff]"
+                className="p-2 rounded dark:bg-[#172a46] bg-[#c2c0c0] w-full focus:outline-none placeholder:text-[#333333] dark:placeholder:text-[#fff] text-sm mt-5"
               />
               <div className="py-3 text-center">
                 <button className="bg-[#20b820] hover:bg-[#25a125] w-full py-2 rounded text-[#fff]">

@@ -34,21 +34,23 @@ export default function Navbar() {
                 <li>
                   <Link href={"/"}>Home</Link>
                 </li>
-
-                <li>
-                  <Link href={"/about"}>About</Link>
-                </li>
                 <li>
                   <Link href={"/services"}>Services</Link>
                 </li>
                 <li>
-                  <Link href={"/page"}>Pages</Link>
+                  <Link href={"/projects"}>Projects</Link>
                 </li>
                 <li>
-                  <Link href={"/blog"}>Blog</Link>
+                  <Link href={"/pricing"}>Pricing</Link>
                 </li>
                 <li>
                   <Link href={"/offer"}>Get Offer</Link>
+                </li>
+                <li>
+                  <Link href={"/contact"}>Contact us</Link>
+                </li>
+                <li>
+                  <Link href={"/about"}>About</Link>
                 </li>
               </ul>
             </div>
@@ -59,21 +61,23 @@ export default function Navbar() {
               <li>
                 <Link href={"/"}>Home</Link>
               </li>
-
-              <li>
-                <Link href={"/about"}>About</Link>
-              </li>
               <li>
                 <Link href={"/services"}>Services</Link>
               </li>
               <li>
-                <Link href={"/page"}>Pages</Link>
+                <Link href={"/projects"}>Projects</Link>
               </li>
               <li>
-                <Link href={"/blog"}>Blog</Link>
+                <Link href={"/pricing"}>Pricing</Link>
               </li>
               <li>
                 <Link href={"/offer"}>Get Offer</Link>
+              </li>
+              <li>
+                <Link href={"/contact"}>Contact us</Link>
+              </li>
+              <li>
+                <Link href={"/about"}>About</Link>
               </li>
             </ul>
           </div>
