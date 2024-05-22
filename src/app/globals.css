@@ -71,22 +71,47 @@ body {
   border-top: 1px solid black;
 }
 /* loading page */
-body {
-  background-color: #fffcf9;
-  overflow: hidden;
-  text-align: center;
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 15px;
+  aspect-ratio: 1;
+  position: relative;
+  animation: l9-0 1.5s infinite steps(2);
 }
-
-body,
-html {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #000;
 }
-
-svg {
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
+.loader::before {
+  box-shadow: 26px 0;
+  transform: translateX(-26px);
+  animation: l9-1 0.75s infinite linear alternate;
+}
+.loader::after {
+  transform: translateX(13px) rotate(0deg) translateX(13px);
+  animation: l9-2 0.75s infinite linear alternate;
+}
+@keyframes l9-0 {
+  0%,
+  49.9% {
+    transform: scale(1);
+  }
+  50%,
+  100% {
+    transform: scale(-1);
+  }
+}
+@keyframes l9-1 {
+  100% {
+    box-shadow: 52px 0;
+  }
+}
+@keyframes l9-2 {
+  100% {
+    transform: translateX(13px) rotate(-180deg) translateX(13px);
+  }
 }

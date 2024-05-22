@@ -1,6 +1,6 @@
 
 export default async function insertUser(data,e) {
-  const res = await fetch(`http://localhost:3000/api/v1/users`, {
+  const res = await fetch(`http://localhost:3000/api/merge-marketing/v1/users`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
