@@ -1,6 +1,13 @@
 import Image from "next/image";
 import seoImage from "../../images/projects/seo.png";
 export default function Projects() {
+  const prevProjects = [
+    {
+      title:"Search Engine Optimization",
+      description:"Search Engine Optimization (SEO) enhances website visibility in search engine results, boosting organic traffic through strategic keyword optimization, content quality improvement, and technical enhancements.",
+      image:seoImage
+    }
+  ]
   return (
     <section>
       <div className="container mx-auto px-2 py-10">
