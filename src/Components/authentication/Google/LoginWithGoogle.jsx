@@ -7,10 +7,14 @@ import googleLogo from "../../../images/logo/google.png";
 export default async function LoginWithGoogle() {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [cUser, cLoading, cError] = useAuthState(auth);
-
+  // console.log(cUser.accessToken);
   const userInfo = {
     displayName: cUser?.displayName,
     email: cUser?.email,
+    uid: cUser?.uid,
+    emailVerified: cUser?.emailVerified,
+    photoURL: cUser?.photoURL,
+    accessToken: cUser?.accessToken,
   };
   //
   const userInfoSend = await userInfoInsert(userInfo);

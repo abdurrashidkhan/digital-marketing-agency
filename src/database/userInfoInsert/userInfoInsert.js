@@ -4,7 +4,7 @@ export default async function userInfoInsert(data) {
   try {
     // C:\projects\digital-marketing-agency\src\app\api\merge-marketing\v1\users\insert-user\[email].js
     const res = await fetch(`http://localhost:3000/api/users/`, {
-      method: "POST",
+      method: "PUT",
       headers:{  "content-type": "application/json",},
       body: JSON.stringify(data),
     });
@@ -18,23 +18,3 @@ export default async function userInfoInsert(data) {
     console.log(error);
   }
 };
-
-
-  // const res = await fetch(`http://localhost:3000/api/merge-marketing/v1/users/${data?.email}`, {
-  //   method: "PUT",
-  //   headers: {
-  //     "content-type": "application/json",
-  //   },
-  //   body: JSON.stringify(data),
-  // });
-  // const result = res.json();
-  // if (res.ok) {
-  //   // router.push('/')
-  //   console.log("add insert success");
-  // }
-  // else if(e){
-  //   alert('please try agin')
-  // }
-
-//   return NextResponse.json(result);
-// }
