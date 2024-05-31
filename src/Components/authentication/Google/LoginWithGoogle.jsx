@@ -1,4 +1,5 @@
 import { auth } from "@/app/firebase.init";
+import Loading from "@/app/loading";
 import userInfoInsert from "@/database/userInfoInsert/userInfoInsert";
 import Image from "next/image";
 import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
@@ -19,15 +20,19 @@ export default async function LoginWithGoogle() {
   //
   const userInfoSend = await userInfoInsert(userInfo);
   //
+
+  // console.log(userInfoSend);
   // console.log(userInfo);
+
+  if (loading || cLoading) {
+    return <Loading></Loading>;
+  }
+
   let errorElement = "";
   if (error || cError) {
     errorElement = <p className="text-danger">Error: {error?.message}</p>;
   }
 
-  if (loading || cLoading) {
-    return console.log("loading for user coming");
-  }
   return (
     <div>
       <button onClick={() => signInWithGoogle()}>

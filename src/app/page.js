@@ -20,10 +20,10 @@ export default function Home() {
       <Services></Services>
       <Projects></Projects>
       <OurTeam />
-      <Pricing/>
+      <Pricing />
       <OurClient />
-      <Subscribe/>
-      <Footer/>
+      <Subscribe />
+      <Footer />
     </>
   );
 }

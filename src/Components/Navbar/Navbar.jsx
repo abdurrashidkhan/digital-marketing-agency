@@ -1,6 +1,43 @@
+"use client";
+import { auth } from "@/app/firebase.init";
+import Loading from "@/app/loading";
+import Image from "next/image";
 import Link from "next/link";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
+import { FiUser } from "react-icons/fi";
+
+import Swal from "sweetalert2";
 import DarkMode from "../darkMode/darkMode";
 export default function Navbar() {
+  const [user, loading, error] = useAuthState(auth);
+  // console.log(user);
+  const [signOut, outLoading, OutError] = useSignOut(auth);
+  const userLogOut = async () => {
+    await signOut();
+    Swal.fire({
+      title: "Logout success",
+      // text: "if you need login of our website ",
+      icon: "success",
+    });
+  };
+
+  if (error || OutError) {
+    return (
+      <div>
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
+  if (loading || outLoading) {
+    return <Loading></Loading>;
+  }
+  if (error) {
+    console.log(error.message);
+  }
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <div className="navbar bg-[#fff] dark:bg-[#122033] border-b border-[#603bf65e] shadow-2xl fixed z-[9999] py-0">
       <div className="container mx-auto px-2">
@@ -129,13 +166,21 @@ export default function Navbar() {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle avatar"
+                className="btn btn-ghost btn-circle avatar "
               >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                  />
+                <div className="rounded-full mx-auto ">
+                  {user ? (
+                    <Image
+                      alt="user profile photo"
+                      width={30}
+                      height={30}
+                      src={user.photoURL}
+                    />
+                  ) : (
+                    <div className="text-[30px] text-center">
+                      <FiUser />
+                    </div>
+                  )}
                 </div>
               </div>
               <ul
@@ -152,7 +197,16 @@ export default function Navbar() {
                   <a className="hover:text-blue-500">Settings</a>
                 </li>
                 <li>
-                  <a className="hover:text-blue-500">Logout</a>
+                  {user ? (
+                    <button
+                      onClick={() => userLogOut()}
+                      className="hover:text-blue-500"
+                    >
+                      Logout
+                    </button>
+                  ) : (
+                    <Link href={"/authentication/login"}>Login Here</Link>
+                  )}
                 </li>
               </ul>
             </div>

@@ -13,11 +13,14 @@ export async function PUT(request) {
     uid,
     emailVerified,
     photoURL,
-    accessToken
+    accessToken,
   };
   await connectMongodb();
   await users.findOneAndUpdate(updateDoc, filter, options, {
     new: true,
   });
-  return NextResponse.json({ message: "User Registered" }, { status: 201 });
+  return NextResponse.json(
+    { message: "User Registered", status: true },
+    { status: 201 }
+  );
 }

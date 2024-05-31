@@ -1,20 +1,31 @@
+"use client";
+
 
 export default async function userInfoInsert(data) {
-  console.log(data)
-  try {
-    // C:\projects\digital-marketing-agency\src\app\api\merge-marketing\v1\users\insert-user\[email].js
-    const res = await fetch(`http://localhost:3000/api/users/`, {
-      method: "PUT",
-      headers:{  "content-type": "application/json",},
-      body: JSON.stringify(data),
-    });
+  console.log(data);
+  if (data.email) {
+    try {
+      // C:\projects\digital-marketing-agency\src\app\api\merge-marketing\v1\users\insert-user\[email].js
+      const res = await fetch(`http://localhost:3000/api/users/`, {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      // if (res.ok) {
+      //   redirect("/");
+      //   Swal.fire({
+      //     title: "Login success",
+      //     // text: "if you need login of our website ",
+      //     icon: "success",
+      //   });
+      // }
+      if (!res.ok) {
+        throw new Error("Failed to insert user info");
+      }
 
-    if (!res.ok) {
-      throw new Error("Failed to insert user info");
+      return res.json();
+    } catch (error) {
+      console.log(error);
     }
-
-    return res.json();
-  } catch (error) {
-    console.log(error);
   }
-};
+}

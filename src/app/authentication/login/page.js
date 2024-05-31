@@ -1,7 +1,14 @@
 "use client";
 import LoginWithAll from "@/Components/authentication/LoginWithAll/LoginWithAll";
+import { auth } from "@/app/firebase.init";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 export default function Login() {
+  const [user, loading, error] = useAuthState(auth);
+  const pathname = usePathname();
   const {
     register,
     handleSubmit,
@@ -9,6 +16,15 @@ export default function Login() {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
+
+  useEffect(() => {
+    if (user) {
+      Swal.fire({
+        title: "login success",
+        icon: "success",
+      });
+    }
+  }, [user]);
 
   return (
     <section className="container mx-auto px-2 relative h-[100vh]">
