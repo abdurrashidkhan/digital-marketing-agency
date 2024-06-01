@@ -16,7 +16,6 @@ export default function Navbar() {
     await signOut();
     Swal.fire({
       title: "Logout success",
-      // text: "if you need login of our website ",
       icon: "success",
     });
   };
