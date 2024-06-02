@@ -1,10 +1,141 @@
+"use client";
+import Error from "@/app/error";
+import { auth } from "@/app/firebase.init";
+import Loading from "@/app/loading";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import {
+  useAuthState,
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
-export default function sinUp() {
+export default function SinUp() {
+  const router = useRouter();
+  const [cuser, cloading, cerror] = useAuthState(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile] = useUpdateProfile(auth);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = async (e) => {
+    await createUserWithEmailAndPassword(e.userEmail, e.password);
+    await updateProfile({ displayName: e.userName });
+    const userInfo = {
+      displayName: e?.userName,
+      email: e?.userEmail,
+      password: e?.password,
+      uid: user?.uid || null,
+      emailVerified: user?.emailVerified || false,
+      photoURL: user?.photoURL || null,
+      accessToken: user?.accessToken || null,
+    };
+    // console.log(userInfo)
+    if (e.userEmail) {
+      try {
+        // C:\projects\digital-marketing-agency\src\app\api\merge-marketing\v1\users\insert-user\[email].js
+        const res = await fetch(`http://localhost:3000/api/users/`, {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(userInfo),
+        });
+        // }
+        if (!res.ok) {
+          throw new Error("Failed to insert user info");
+        } else {
+          reset();
+          console.log(res);
+        }
+
+        return res.json();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+  useEffect(() => {
+    if (user || cuser) {
+      Swal.fire({
+        title: "Login success",
+        icon: "success",
+      });
+      router.push("/");
+    }
+  }, [user,cuser]);
+  if (cloading || loading) {
+    return <Loading></Loading>;
+  }
+  if (cerror || error) {
+    return <Error></Error>;
+  }
   return (
-    <section>
-      <div className="container mx-auto px-4 py-5">
-        <h1>sin up</h1>
+    <section className="container mx-auto px-2 relative h-[100vh]">
+      <div className="content_center w-[350px]  h-auto bg-[#ececec] p-3 rounded shadow-2xl">
+        <form className="" onSubmit={handleSubmit(onSubmit)}>
+          <div className="my-2">
+            <label htmlFor="userName" className="block">
+              Enter Your Name
+            </label>
+            <div className="relative mt-2 rounded-md shadow-sm">
+              <input
+                type="text"
+                name="userName"
+                id="userName"
+                placeholder="enter your name"
+                className="w-full px-2 border"
+                {...register("userName", { required: true })}
+              />
+            </div>
+          </div>
+          <div className="my-2">
+            <label htmlFor="userEmail" className="block">
+              Email address
+            </label>
+            <div className="relative mt-2 rounded-md shadow-sm">
+              <input
+                type="email"
+                name="userEmail"
+                id="userEmail"
+                placeholder="enter your password"
+                className="w-full px-2 border"
+                {...register("userEmail", { required: true })}
+              />
+            </div>
+          </div>
+          <div className="my-2">
+            <label htmlFor="password" className="block">
+              Password
+            </label>
+            <div className="relative mt-2 rounded-md shadow-sm">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                className="w-full px-2 border"
+                {...register("password", { required: true })}
+              />
+            </div>
+          </div>
+          {/* <input placeholder="Enter your Password"  {...register("userPassword", { pattern: /^[A-Za-z]+$/i })} /> */}
+          <div className="">
+            <input
+              className="w-full my-4 bg-indigo-700 px-6 p-1 text-[#FFF] rounded shadow-2xl hover:cursor-pointer"
+              type="submit"
+            />
+          </div>
+        </form>
+        {/* login and sign up all */}
+        {/* <LoginWithAll /> */}
       </div>
     </section>
-  )
+  );
 }

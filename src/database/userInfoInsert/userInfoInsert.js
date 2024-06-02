@@ -11,13 +11,6 @@ export default async function userInfoInsert(data) {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(data),
       });
-      // if (res.ok) {
-      //   redirect("/");
-      //   Swal.fire({
-      //     title: "Login success",
-      //     // text: "if you need login of our website ",
-      //     icon: "success",
-      //   });
       // }
       if (!res.ok) {
         throw new Error("Failed to insert user info");

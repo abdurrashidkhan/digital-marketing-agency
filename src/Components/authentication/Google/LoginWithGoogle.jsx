@@ -4,6 +4,7 @@ import userInfoInsert from "@/database/userInfoInsert/userInfoInsert";
 import Image from "next/image";
 import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import googleLogo from "../../../images/logo/google.png";
+
 export default async function LoginWithGoogle() {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [cUser, cLoading, cError] = useAuthState(auth);

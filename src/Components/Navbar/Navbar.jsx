@@ -168,7 +168,7 @@ export default function Navbar() {
                 className="btn btn-ghost btn-circle avatar "
               >
                 <div className="rounded-full mx-auto ">
-                  {user ? (
+                  {user?.photoURL != null ? (
                     <Image
                       alt="user profile photo"
                       width={30}
