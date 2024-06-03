@@ -2,34 +2,41 @@ import { auth } from "@/app/firebase.init";
 import Loading from "@/app/loading";
 import userInfoInsert from "@/database/userInfoInsert/userInfoInsert";
 import Image from "next/image";
-import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import googleLogo from "../../../images/logo/google.png";
 
 export default async function LoginWithGoogle() {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  const [cUser, cLoading, cError] = useAuthState(auth);
+  // const [cUser, cLoading, cError] = useAuthState(auth);
   // console.log(cUser.accessToken);
-  const userInfo = {
-    displayName: cUser?.displayName,
-    email: cUser?.email,
-    uid: cUser?.uid,
-    emailVerified: cUser?.emailVerified,
-    photoURL: cUser?.photoURL,
-    accessToken: cUser?.accessToken,
+
+  const googleLogin = async () => {
+    await signInWithGoogle();
   };
-  const userInfoSend = await userInfoInsert(userInfo);
-  if (loading || cLoading) {
+  const userInfo = {
+    displayName: user?.user?.displayName,
+    email: user?.user?.email,
+    uid: user?.user?.uid,
+    emailVerified: user?.user?.emailVerified,
+    photoURL: user?.user?.photoURL,
+    accessToken: user?.user?.accessToken,
+  };
+  if (user) {
+    await userInfoInsert(userInfo);
+  }
+
+  if (loading) {
     return <Loading></Loading>;
   }
 
   let errorElement = "";
-  if (error || cError) {
+  if (error) {
     errorElement = <p className="text-danger">Error: {error?.message}</p>;
   }
 
   return (
     <div>
-      <button onClick={() => signInWithGoogle()}>
+      <button onClick={() => googleLogin()}>
         <Image
           className="mx-auto w-[30px] h-auto"
           loading="lazy"

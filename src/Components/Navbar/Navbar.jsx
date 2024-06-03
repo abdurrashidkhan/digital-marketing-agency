@@ -1,13 +1,14 @@
 "use client";
 import { auth } from "@/app/firebase.init";
 import Loading from "@/app/loading";
-import Image from "next/image";
 import Link from "next/link";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
-import { FiUser } from "react-icons/fi";
 
+import Image from "next/image";
+import { FiUser } from "react-icons/fi";
 import Swal from "sweetalert2";
 import DarkMode from "../darkMode/darkMode";
+
 export default function Navbar() {
   const [user, loading, error] = useAuthState(auth);
   // console.log(user);
@@ -36,7 +37,6 @@ export default function Navbar() {
   if (loading) {
     return <Loading></Loading>;
   }
-
   return (
     <div className="navbar bg-[#fff] dark:bg-[#122033] border-b border-[#603bf65e] shadow-2xl fixed z-[9999] py-0">
       <div className="container mx-auto px-2">

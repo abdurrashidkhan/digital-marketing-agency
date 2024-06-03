@@ -6,7 +6,6 @@ import { IoMdMoon } from "react-icons/io";
 export default function darkMode() {
   // Dark Mode setup
   const [theme, setTheme] = useState(null);
-  console.log(theme);
   useEffect(() => {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       setTheme("dark");

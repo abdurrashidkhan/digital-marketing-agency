@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function PUT(request) {
   const { displayName, email, uid, emailVerified, photoURL, accessToken } =
     await request.json();
-  const filter = { uid: uid };
+  const filter = { email: email };
   const options = { upsert: true };
   const updateDoc = {
     displayName,

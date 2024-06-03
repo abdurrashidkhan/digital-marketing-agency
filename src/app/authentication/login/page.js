@@ -5,11 +5,13 @@ import { auth } from "@/app/firebase.init";
 import Loading from "@/app/loading";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 export default function Login() {
-  const [user, loading, error] = useAuthState(auth);
+  // const [user, loading, error] = useAuthState(auth);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
   const router = useRouter();
   const {
     register,
@@ -17,7 +19,9 @@ export default function Login() {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    await signInWithEmailAndPassword(data.userEmail, data.password);
+  };
 
   useEffect(() => {
     if (user) {
@@ -28,7 +32,7 @@ export default function Login() {
       router.push("/");
     }
   }, [user]);
-  
+
   if (loading) {
     return <Loading></Loading>;
   }

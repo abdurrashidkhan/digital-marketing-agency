@@ -1,11 +1,11 @@
 "use client";
+import LoginWithAll from "@/Components/authentication/LoginWithAll/LoginWithAll";
 import Error from "@/app/error";
 import { auth } from "@/app/firebase.init";
 import Loading from "@/app/loading";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import {
-  useAuthState,
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
@@ -14,7 +14,7 @@ import Swal from "sweetalert2";
 
 export default function SinUp() {
   const router = useRouter();
-  const [cuser, cloading, cerror] = useAuthState(auth);
+  // const [cUser, cLoading, cError] = useAuthState(auth);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile] = useUpdateProfile(auth);
@@ -42,7 +42,7 @@ export default function SinUp() {
     if (e.userEmail) {
       try {
         // C:\projects\digital-marketing-agency\src\app\api\merge-marketing\v1\users\insert-user\[email].js
-        const res = await fetch(`http://localhost:3000/api/users/`, {
+        const res = await fetch(`http://localhost:3000/api/users/create-account/`, {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(userInfo),
@@ -52,7 +52,6 @@ export default function SinUp() {
           throw new Error("Failed to insert user info");
         } else {
           reset();
-          console.log(res);
         }
 
         return res.json();
@@ -62,19 +61,21 @@ export default function SinUp() {
     }
   };
   useEffect(() => {
-    if (user || cuser) {
+    if (user) {
       Swal.fire({
         title: "Login success",
         icon: "success",
       });
       router.push("/");
     }
-  }, [user,cuser]);
-  if (cloading || loading) {
+  }, [user]);
+
+
+  if (loading) {
     return <Loading></Loading>;
   }
-  if (cerror || error) {
-    return <Error></Error>;
+  if (error) {
+    return console.log(error.message);
   }
   return (
     <section className="container mx-auto px-2 relative h-[100vh]">
@@ -134,7 +135,7 @@ export default function SinUp() {
           </div>
         </form>
         {/* login and sign up all */}
-        {/* <LoginWithAll /> */}
+        <LoginWithAll />
       </div>
     </section>
   );
