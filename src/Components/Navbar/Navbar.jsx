@@ -187,13 +187,23 @@ export default function Navbar() {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2  bg-[#fff] dark:bg-[#101C2C] dark:text-[fff] shadow-2xl rounded border-[1px] dark:border-[#0e105c71]  w-52"
               >
                 <li>
-                  <a className="justify-between hover:text-blue-500">
+                  <Link
+                    href={`/profile`}
+                    className="justify-between hover:text-blue-500"
+                  >
                     Profile
                     <span className="badge">New</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="hover:text-blue-500">Settings</a>
+                  <Link href={`/overview`} className="hover:text-blue-500">
+                    Overview
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/dashboard`} className="hover:text-blue-500">
+                    Dashboard
+                  </Link>
                 </li>
                 <li>
                   {user ? (
