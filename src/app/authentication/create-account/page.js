@@ -91,7 +91,7 @@ export default function SinUp() {
                 name="userName"
                 id="userName"
                 placeholder="enter your name"
-                className="w-full px-2 border"
+                className="w-full px-2 border border-[#bbbbbb]  py-2 drop-shadow-2xl rounded bg-transparent dark:border-[#2f415a] outline-none focus:outline-none"
                 {...register("userName", { required: true })}
               />
             </div>
@@ -106,7 +106,7 @@ export default function SinUp() {
                 name="userEmail"
                 id="userEmail"
                 placeholder="enter your password"
-                className="w-full px-2 border"
+                className="w-full px-2 border border-[#bbbbbb]  py-2 drop-shadow-2xl rounded bg-transparent dark:border-[#2f415a] outline-none focus:outline-none"
                 {...register("userEmail", { required: true })}
               />
             </div>
@@ -121,7 +121,7 @@ export default function SinUp() {
                 name="password"
                 id="password"
                 placeholder="Password"
-                className="w-full px-2 border"
+                className="w-full px-2 border border-[#bbbbbb]  py-2 drop-shadow-2xl rounded bg-transparent dark:border-[#2f415a] outline-none focus:outline-none"
                 {...register("password", { required: true })}
               />
             </div>

@@ -41,7 +41,7 @@ export default function Login() {
   }
   return (
     <section className="container mx-auto px-2 relative h-[100vh]">
-      <div className="content_center w-[350px]  h-auto bg-[#ececec] p-3 rounded shadow-2xl">
+      <div className="content_center w-[350px]  h-auto bg-[#ececec] dark:bg-[#1b2a3f]  p-3 rounded shadow-2xl">
         <form className="" onSubmit={handleSubmit(onSubmit)}>
           <div className="my-2">
             <label htmlFor="userEmail" className="block">
@@ -53,12 +53,12 @@ export default function Login() {
                 name="userEmail"
                 id="userEmail"
                 placeholder="enter your password"
-                className="w-full px-2 border"
+                className="w-full px-2 border border-[#bbbbbb]  py-2 drop-shadow-2xl rounded bg-transparent dark:border-[#2f415a] outline-none focus:outline-none"
                 {...register("userEmail", { required: true })}
               />
             </div>
           </div>
-          <div className="my-2">
+          <div className="my-4">
             <label htmlFor="password" className="block">
               Password
             </label>
@@ -68,7 +68,7 @@ export default function Login() {
                 name="password"
                 id="password"
                 placeholder="Password"
-                className="w-full px-2 border"
+                className="w-full px-2 border border-[#bbbbbb]  py-2 drop-shadow-2xl rounded bg-transparent dark:border-[#2f415a] outline-none focus:outline-none"
                 {...register("password", { required: true })}
               />
             </div>
