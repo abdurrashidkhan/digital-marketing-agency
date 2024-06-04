@@ -1,62 +1,90 @@
-'use client'
+"use client";
 import Footer from "@/Components/Footer/Footer";
 import Link from "next/link";
 import { useState } from "react";
-import { IoMdMenu } from "react-icons/io";
+import { HiMiniArrowRightOnRectangle } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
-import './style.css';
+import "./style.css";
 
 const layout = ({ children }) => {
-  const [open, setOpen] = useState(false)
-
-
+  const [open, setOpen] = useState(false);
 
   const dashboardRouting = [
-    { path: '/dashboard', name: 'Overview', },
-    { path: '/dashboard/add-product', name: 'Add Project', },
-    { path: '/dashboard/manage-products', name: 'Manage Projects', },
-  ]
+    { path: "/dashboard", name: "Overview" },
+    { path: "/dashboard/add-product", name: "Add Project" },
+    { path: "/dashboard/manage-products", name: "Manage Projects" },
+  ];
   return (
     <>
       {/* <Navbar /> */}
       <div className="container mx-auto px-2  pt-[95px] sm:pt-[50px] ">
-
         {/* this content just small dives  */}
-        <div className="fixed text-3xl ease-in-out duration- z-[99] " id="dashboard_menu_icon">
-          {
-            open ? <IoClose
-              className="sm:hidden" onClick={() => setOpen(false)} />
-              :
-              <IoMdMenu className="sm:hidden" onClick={() => setOpen(true)} />
-          }
-        </div>
+        {/*  */}
+        {/*  */}
+        {!open && (
+          <div
+            className="fixed text-5xl ease-in-out duration- z-[99] text-[#fff] hover:tooltip tooltip-open tooltip-right sm:hidden"
+            id="dashboard_menu_icon"
+            data-tip="Menu"
+          >
+            <HiMiniArrowRightOnRectangle
+              className="sm:hidden w-full h-[60px] py-5 p-2  rounded-r shadow-2xl drop-shadow-2xl bg-[#ccc9c9] dark:bg-[#122033] dark:text-[#fff] text-[#000]"
+              onClick={() => setOpen(true)}
+              // id="dashboard_menu_open_icon"
+            />
+          </div>
+        )}
         {/* end  */}
-        <div className='flex gap-0 relative'>
-          {
-            open && <div className=''>
-              <aside className='absolute sm:hidden w-[70%] bg-[#fff] dark:bg-[#122033] h-[100vh]  py-5 ease-in-out duration-700 top-[-10%] left-[0%]'>
-                <ul className=" py-32">
-                  {dashboardRouting.map(({ path, name }) =>
+        <div className="flex gap-0 relative">
+          {open && (
+            <div className="">
+              <aside className="absolute sm:hidden w-[70%] bg-[#fff] dark:bg-[#122033] h-[100vh]  py-5 ease-in-out duration-700 top-[-10%] left-[0%]">
+                <div
+                  className="absolute  text-red-700"
+                  id="dashboard_close_icon"
+                >
+                  <IoClose
+                    className="sm:hidden text-3xl"
+                    onClick={() => setOpen(false)}
+                  />
+                </div>
+                <ul className="" id="dashboard_mobile_items">
+                  {dashboardRouting.map(({ path, name }) => (
                     <li key={path} className="px-3 py-1">
-                      <Link exact={path === '/dashboard'} ActiveClassName='text-blue-600' href={path}>{name}</Link>
+                      <Link
+                        exact={path === "/dashboard"}
+                        ActiveClassName="text-blue-600"
+                        href={path}
+                      >
+                        {name}
+                      </Link>
                     </li>
-                  )}
+                  ))}
                 </ul>
               </aside>
             </div>
-          }
+          )}
           {/* this menu list for large dives */}
-          <aside className="hidden sm:block sm:w-[30%] bg-[#fff] dark:bg-[#122033] h-[100vh]  py-5 ease-in-out duration-700 rounded shadow-2xl drop-shadow-2xl ">
-            <ul>
-              {dashboardRouting.map(({ path, name }) =>
+          <aside className="hidden sm:block sm:w-[30%] bg-[#fff] dark:bg-[#122033] h-[100vh]  py-5 ease-in-out duration-700 rounded shadow-2xl drop-shadow-2xl">
+            <ul className="mt-5">
+              {dashboardRouting.map(({ path, name }) => (
                 <li key={path} className="px-3 py-1">
-                  <Link exact={path === '/dashboard'} ActiveClassName='text-blue-600' href={path}>{name}</Link>
+                  <Link
+                    exact={path === "/dashboard"}
+                    ActiveClassName="text-blue-600"
+                    href={path}
+                  >
+                    {name}
+                  </Link>
                 </li>
-              )}
+              ))}
             </ul>
           </aside>
           {/* main content show */}
-          <div className="w-[100%] bg-[#e7e4e4] dark:bg-[#0f1b2b] dark:text-[#fff] p-5 h-[100vh] mt-[-8%] sm:mt-0 rounded shadow-2xl " id="dashboard_content">
+          <div
+            className="w-[100%] bg-[#e7e4e4] dark:bg-[#0f1b2b] dark:text-[#fff] p-5 h-[100vh] mt-[-8%] sm:mt-0 rounded shadow-2xl  text-center sm:text-start pt-10"
+            id="dashboard_content"
+          >
             {children}
           </div>
         </div>
@@ -64,6 +92,6 @@ const layout = ({ children }) => {
       <Footer />
     </>
   );
-}
+};
 
 export default layout;
