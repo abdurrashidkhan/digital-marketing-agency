@@ -1,6 +1,6 @@
 const page = () => {
   return (
-    <div className="py-8">
+    <div className="">
       <h1>Dash Board</h1>
     </div>
   );

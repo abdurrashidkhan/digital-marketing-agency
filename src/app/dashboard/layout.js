@@ -1,14 +1,16 @@
 "use client";
 import Footer from "@/Components/Footer/Footer";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { HiMiniArrowRightOnRectangle } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
 import "./style.css";
 
 const layout = ({ children }) => {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
-
+console.log(pathname)
   const dashboardRouting = [
     { path: "/dashboard", name: "Overview" },
     { path: "/dashboard/add-product", name: "Add Project" },
@@ -52,8 +54,9 @@ const layout = ({ children }) => {
                   {dashboardRouting.map(({ path, name }) => (
                     <li key={path} className="px-3 py-1">
                       <Link
-                        exact={path === "/dashboard"}
-                        ActiveClassName="text-blue-600"
+                      className={`${pathname === path ? 'text-blue-600' : ''}`}
+                        // exact={path === pathnames}
+                        // ActiveClassName="text-blue-600"
                         href={path}
                       >
                         {name}
@@ -71,7 +74,7 @@ const layout = ({ children }) => {
                 <li key={path} className="px-3 py-1">
                   <Link
                     exact={path === "/dashboard"}
-                    ActiveClassName="text-blue-600"
+                    className={`${pathname === path ? 'text-blue-600' : ''}`}
                     href={path}
                   >
                     {name}

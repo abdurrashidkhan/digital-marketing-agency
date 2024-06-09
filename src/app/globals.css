@@ -95,6 +95,9 @@ body {
   transform: translateX(13px) rotate(0deg) translateX(13px);
   animation: l9-2 0.75s infinite linear alternate;
 }
+.active {
+  color: #1ece27;
+}
 @keyframes l9-0 {
   0%,
   49.9% {
