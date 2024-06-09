@@ -5,11 +5,13 @@ import Link from "next/link";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { FiUser } from "react-icons/fi";
 import Swal from "sweetalert2";
 import DarkMode from "../darkMode/darkMode";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [user, loading, error] = useAuthState(auth);
   // console.log(user);
   const [signOut, outLoading, OutError] = useSignOut(auth);
@@ -20,6 +22,16 @@ export default function Navbar() {
       icon: "success",
     });
   };
+  // routing
+  const routing = [
+    { path: "/", name: "Home" },
+    { path: "/services", name: "Services" },
+    { path: "/projects", name: "Projects" },
+    { path: "/pricing", name: "Pricing" },
+    { path: "/offer", name: "Get Offer" },
+    { path: "/contact", name: "Contact us" },
+    { path: "/about", name: "About" },
+  ];
 
   if (error || OutError) {
     return (
@@ -67,54 +79,34 @@ export default function Navbar() {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <li>
-                  <Link href={"/"}>Home</Link>
-                </li>
-                <li>
-                  <Link href={"/services"}>Services</Link>
-                </li>
-                <li>
-                  <Link href={"/projects"}>Projects</Link>
-                </li>
-                <li>
-                  <Link href={"/pricing"}>Pricing</Link>
-                </li>
-                <li>
-                  <Link href={"/offer"}>Get Offer</Link>
-                </li>
-                <li>
-                  <Link href={"/contact"}>Contact us</Link>
-                </li>
-                <li>
-                  <Link href={"/about"}>About</Link>
-                </li>
+                {routing.map(({ path, name }) => (
+                  <li key={path} className="px-3 py-1">
+                    <Link
+                      exact={path === "/dashboard"}
+                      className={`${pathname === path ? "text-[#20b820]" : ""}`}
+                      href={path}
+                    >
+                      {name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             <a className="btn btn-ghost text-xl">E-Merge</a>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
-              <li>
-                <Link href={"/"}>Home</Link>
-              </li>
-              <li>
-                <Link href={"/services"}>Services</Link>
-              </li>
-              <li>
-                <Link href={"/projects"}>Projects</Link>
-              </li>
-              <li>
-                <Link href={"/pricing"}>Pricing</Link>
-              </li>
-              <li>
-                <Link href={"/offer"}>Get Offer</Link>
-              </li>
-              <li>
-                <Link href={"/contact"}>Contact us</Link>
-              </li>
-              <li>
-                <Link href={"/about"}>About</Link>
-              </li>
+              {routing.map(({ path, name }) => (
+                <li key={path} className="px-3 py-1">
+                  <Link
+                    exact={path === "/dashboard"}
+                    className={`${pathname === path ? "text-[#20b820]" : ""}`}
+                    href={path}
+                  >
+                    {name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="navbar-end">

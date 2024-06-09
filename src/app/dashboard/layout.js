@@ -54,13 +54,12 @@ console.log(pathname)
                   {dashboardRouting.map(({ path, name }) => (
                     <li key={path} className="px-3 py-1">
                       <Link
-                      className={`${pathname === path ? 'text-blue-600' : ''}`}
-                        // exact={path === pathnames}
-                        // ActiveClassName="text-blue-600"
-                        href={path}
-                      >
-                        {name}
-                      </Link>
+                    exact={path === "/dashboard"}
+                    className={`${pathname === path ? 'text-[#20b820]' : ''}`}
+                    href={path}
+                  >
+                    {name}
+                  </Link>
                     </li>
                   ))}
                 </ul>
@@ -74,7 +73,7 @@ console.log(pathname)
                 <li key={path} className="px-3 py-1">
                   <Link
                     exact={path === "/dashboard"}
-                    className={`${pathname === path ? 'text-blue-600' : ''}`}
+                    className={`${pathname === path ? 'text-[#20b820]' : ''}`}
                     href={path}
                   >
                     {name}
