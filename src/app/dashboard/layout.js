@@ -10,7 +10,6 @@ import "./style.css";
 const layout = ({ children }) => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-console.log(pathname)
   const dashboardRouting = [
     { path: "/dashboard", name: "Overview" },
     { path: "/dashboard/add-product", name: "Add Project" },
@@ -84,7 +83,7 @@ console.log(pathname)
           </aside>
           {/* main content show */}
           <div
-            className="w-[100%] bg-[#e7e4e4] dark:bg-[#0f1b2b] dark:text-[#fff] p-5 h-[100vh] mt-[-8%] sm:mt-0 rounded shadow-2xl  text-center sm:text-start pt-10"
+            className="w-[100%] bg-[#e7e4e4] dark:bg-[#0f1b2b] dark:text-[#fff] p-5 h-[100vh] mt-[-8%] sm:mt-0 rounded shadow-2xl  text-center sm:text-start pt-10 mb-5 overflow-auto"
             id="dashboard_content"
           >
             {children}

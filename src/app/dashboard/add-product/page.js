@@ -1,10 +1,10 @@
 "use client";
+import insertService from "@/database/insert/insertService";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import Swal from "sweetalert2";
 // import './Upload.css'
 
-const Addservice = () => {
+const AddService = () => {
   const [isLoading, seIsLoading] = useState(false);
   const [thimbleOne, setThimbleOne] = useState("");
   const [thimbleTwo, setThimbleTwo] = useState("");
@@ -93,84 +93,66 @@ const Addservice = () => {
           const service = {
             name: data.servicesName,
             title: data.servicesTitle,
-            unit: data.serviceUnit,
-            status: data.serviceStatus,
             categories: data.catagories,
             price: data.servicePrice,
-            brand: data.servicesBrand,
-            section: data.servicesSection,
             serviceDiscount: data.serviceDiscount,
             date: new Date(),
-            serviceFacture: [
-              { facture: data.serviceFacture },
-              { facture: data.serviceFactureTwo },
-              { facture: data.serviceFactureThree },
-              { facture: data.serviceFactureFore },
-              { facture: data.serviceFactureFive },
-              { facture: data.serviceFactureSix },
-              { facture: data.serviceFactureSeven },
-              { facture: data.serviceFacture },
-            ],
-            // thimble: [
-            //   { thimble: data.thimbleOne },
-            //   { thimble: data.thimbleTwo },
-            //   { thimble: data.thimbleThree },
-            //   { thimble: data.thimbleFore }
-
-            // ],
+            facture: data.serviceFacture,
             img: img,
-            quantity: data.servicesQuantity,
             description: data.serviceDescription,
           };
-          console.log(service);
+          // console.log(service);
+          const insertServices = insertService(service,seIsLoading,reset);
+          
           // send service data to database
-          fetch(
-            "https://actual-services-of-e-commerce-server-site.vercel.app/service/add-service",
-            {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-              },
-              body: JSON.stringify(service),
-            }
-          )
-            .then((res) => res.json())
-            .then((inserted) => {
-              if (inserted.status) {
-                Swal.fire("service add success", "", "success");
-                reset();
-                seIsLoading(false);
-              }
-            });
+          // const res = fetch("http://localhost:3000/api/service", {
+          //   method: "POST",
+          //   headers: {
+          //     "content-type": "application/json",
+          //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          //   },
+          //   body: JSON.stringify(service),
+          // });
+          // console.log(res.OK)
+          // if (res.ok) {
+          //   Swal.fire("service add success", "", "success");
+          //   reset();
+          //   seIsLoading(false);
+          // }
+          // .then((res) => res.json())
+          // .then((inserted) => {
+          //   if (inserted.status) {
+          //     Swal.fire("service add success", "", "success");
+          //     reset();
+          //     seIsLoading(false);
+          //   }
+          // });
           // console.log(service);
         }
       });
   };
 
   return (
-    <div className="w-[98%]">
+    <div className="w-[98%] h-auto mb-5">
       <div
         id="service-content"
-        className="rounded  bg-[#fff] dark:text-[#fff] shadow-2xl  mb-[4rem]"
+        className="rounded  bg-[#fff] text-[#000] dark:bg-[#122033] dark:text-[#e7e6eb] shadow-2xl  mb-[4rem]"
       >
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="text-center md:text-start">
-            <h1 className="text-2xl font-serif pt-4 text-slate-700 pl-5">
-              Add Service
-            </h1>
+            <h1 className="text-2xl font-serif pt-4  pl-5">Add Service</h1>
           </div>
           <div className="p-4 text-start">
             <div className="grid grid-cols-1 md:grid-cols-2 items-center  gap-5">
               <div className="w-full">
-                <label htmlFor="servicesName" className="text-slate-700 ">
+                <label htmlFor="servicesName" className=" ">
                   Service Name{" "}
                 </label>
                 <input
                   id="servicesName"
                   name="servicesName"
                   type="text"
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-400 border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm  bg-[#fff] mt-2"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-700 border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-[#1f296117]  bg-[#fff] mt-2"
                   placeholder="Type Here service Name "
                   {...register("servicesName", {
                     required: {
@@ -188,14 +170,14 @@ const Addservice = () => {
                 </label>
               </div>
               <div className="w-full">
-                <label htmlFor="servicesTitle" className="text-slate-700 ">
+                <label htmlFor="servicesTitle" className=" ">
                   Service Title{" "}
                 </label>
                 <input
                   id="servicesTitle"
                   name="servicesTitle"
                   type="text"
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-400 border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm  bg-[#fff] mt-2"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-700 border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-[#1f296117]  bg-[#fff] mt-2"
                   placeholder="Type Here service Name "
                   {...register("servicesTitle", {
                     required: {
@@ -217,14 +199,14 @@ const Addservice = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2  items-center gap-5 pt-3">
               <div className="w-full">
-                <label htmlFor="servicePrice" className="text-slate-700 ">
+                <label htmlFor="servicePrice" className=" ">
                   Service price{" "}
                 </label>
                 <input
                   id="servicePrice"
                   name="servicePrice"
                   type="number"
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border  border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm  bg-[#fff] mt-2"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-700 border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-[#1f296117]  bg-[#fff] mt-2"
                   placeholder="service price"
                   {...register("servicePrice", {
                     required: {
@@ -242,14 +224,14 @@ const Addservice = () => {
                 </label>
               </div>
               <div className="w-full">
-                <label htmlFor="serviceDiscount" className="text-slate-700 ">
+                <label htmlFor="serviceDiscount" className=" ">
                   service Discount{" "}
                 </label>
                 <input
                   id="serviceDiscount"
                   name="serviceDiscount"
                   type="number"
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border  border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm  bg-[#fff] mt-2"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-700 border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-[#1f296117]  bg-[#fff] mt-2"
                   placeholder="service Discount"
                   {...register("serviceDiscount", {
                     required: {
@@ -270,12 +252,12 @@ const Addservice = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5 pt-3">
               <div className="w-full">
-                <label htmlFor="catagories" className="text-slate-700 ">
+                <label htmlFor="catagories" className=" ">
                   Service Catagories
                 </label>
                 <select
                   id="catagories"
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border  border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm  bg-[#fff] mt-2"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-700 border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-[#1f296117]  bg-[#fff] mt-2"
                   {...register("catagories", {
                     required: {
                       value: true,
@@ -286,20 +268,27 @@ const Addservice = () => {
                   <option selected disabled>
                     Select Catagories
                   </option>
-                  <option value="mobile">Mobile</option>
-                  <option value="laptop">Laptop</option>
-                  <option value="monitor">Monitor</option>
-                  <option value="watch">Watch</option>
-                  <option value="headphone">Headphone</option>
-                  <option value="computer">Computer</option>
-                  <option value="computer-accessories">
-                    Computer Accessories
+                  <option value="seo">Search Engine Optimization (SEO)</option>
+                  <option value="content-marketing">Content Marketing</option>
+                  <option value="social-Media-marketing">
+                    Social Media Marketing
                   </option>
-                  <option value="charger-cables">Charger and Cables</option>
-                  <option value="power-bank">Power Bank</option>
-                  <option value="cards-coupons">Cards and Coupons</option>
+                  <option value="email-marketing">Email Marketing</option>
+                  <option value="affiliate-marketing">
+                    Affiliate Marketing
+                  </option>
+                  <option value="influencer-marketing">
+                    Influencer Marketing
+                  </option>
+                  <option value="analytics-data-analysis">
+                    Analytics and Data Analysis
+                  </option>
+                  <option value="mobile-marketing">Mobile Marketing</option>
+                  <option value="video-marketing">Video Marketing</option>
+                  <option value="ecommerce-marketing">
+                    E-commerce Marketing
+                  </option>
                   <option value="registry-gifting">Registry and Gifting</option>
-                  <option value="tv">Tv</option>
                 </select>
                 <label className="">
                   {errors.catagories?.type === "required" && (
@@ -310,17 +299,14 @@ const Addservice = () => {
                 </label>
               </div>
               <div className="w-full">
-                <label
-                  htmlFor="serviceFacture"
-                  className="text-slate-700 "
-                >
+                <label htmlFor="serviceFacture" className=" ">
                   service Facture
                 </label>
                 <input
                   id="serviceFacture"
                   name="serviceFacture"
                   type="text"
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm  bg-[#fff] mt-2"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-700 border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-[#1f296117]  bg-[#fff] mt-2"
                   placeholder="service Facture"
                   {...register("serviceFacture", {
                     required: {
@@ -339,14 +325,14 @@ const Addservice = () => {
               </div>
             </div>
             <div className="pt-3">
-              <label htmlFor="image" className="text-slate-700 ">
+              <label htmlFor="image" className=" ">
                 Service Photo
               </label>
               <input
                 id="image"
                 name="image"
                 type="file"
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm  bg-[#fff] mt-2"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-700 border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-[#1f296117]  bg-[#fff] mt-2"
                 placeholder="Type Here service photos "
                 {...register("image", {
                   required: {
@@ -364,15 +350,16 @@ const Addservice = () => {
               </label>
             </div>
             <div className="pt-3">
-              <label htmlFor="serviceBenefit" className="text-slate-700 ">
-                Service Benefit              </label>
+              <label htmlFor="serviceBenefit" className=" ">
+                Service Benefit{" "}
+              </label>
               <textarea
                 cols="10"
                 rows="5"
                 id="serviceBenefit"
                 name="serviceBenefit"
                 type="text"
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border  border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-[#fff] mt-2"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-700 border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-[#1f296117]  bg-[#fff] mt-2"
                 placeholder="Type Here service Benefit "
                 {...register("serviceBenefit", {
                   required: {
@@ -390,7 +377,7 @@ const Addservice = () => {
               </label>
             </div>
             <div className="pt-3">
-              <label htmlFor="serviceDescription" className="text-slate-700 ">
+              <label htmlFor="serviceDescription" className=" ">
                 Service Description
               </label>
               <textarea
@@ -399,7 +386,7 @@ const Addservice = () => {
                 id="serviceDescription"
                 name="serviceDescription"
                 type="text"
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border  border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-[#fff] mt-2"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border dark:border-gray-700 border-gray-400  placeholder-gray-500 dark:text-slate-400 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-[#1f296117]  bg-[#fff] mt-2"
                 placeholder="Type Here service Description "
                 {...register("serviceDescription", {
                   required: {
@@ -436,4 +423,4 @@ const Addservice = () => {
   );
 };
 
-export default Addservice;
+export default AddService;
