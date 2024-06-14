@@ -1,4 +1,4 @@
-export default function workingProcess() {
+export default function WorkingProcess() {
   return (
     <section className="container mx-auto px-2 py-14 mb-8 h-auto dark:bg-[#122033] dark:text-[#fff] bg-[#fff] text-[#000] ease-in-out duration-1000">
       <div className="text-center py-8">
