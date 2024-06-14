@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { CiLight } from "react-icons/ci";
 import { IoMdMoon } from "react-icons/io";
 
-export default function darkMode() {
+export default function DarkMode() {
   // Dark Mode setup
   const [theme, setTheme] = useState(null);
   useEffect(() => {

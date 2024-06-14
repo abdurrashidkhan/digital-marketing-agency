@@ -32,7 +32,7 @@ export default function Pricing() {
 
                   <ul role="list" className="pt-6 mt-6 space-y-6 border-t">
                     <span className="text-lg font-semibold ">
-                      What's included?
+                      What&apos;s included?
                     </span>
 
                     <li className="flex">
@@ -146,7 +146,7 @@ export default function Pricing() {
 
                   <ul role="list" className="pt-6 mt-6 space-y-6 border-t">
                     <span className="text-lg font-semibold text-white">
-                      What's included?
+                      What&apos;s included?
                     </span>
 
                     <li className="flex">
@@ -288,7 +288,7 @@ export default function Pricing() {
 
                   <ul role="list" className="pt-6 mt-6 space-y-6 border-t">
                     <span className="text-lg font-semibold ">
-                      What's included?
+                      What&apos;s included?
                     </span>
 
                     <li className="flex">

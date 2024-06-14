@@ -10,9 +10,9 @@ export default function OurTeam() {
           </h1>
           <p>
             Meet our dynamic digital marketing team, adept in SEO, content
-            creation, social media management, and analytics. We're committed to
-            amplifying your brand's online presence and driving impactful
-            results.
+            creation, social media management, and analytics. We&apos;re
+            committed to amplifying your brand&apos;s online presence and
+            driving impactful results.
           </p>
         </div>
         {/* our team member */}

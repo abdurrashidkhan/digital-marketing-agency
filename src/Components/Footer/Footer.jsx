@@ -58,7 +58,7 @@ export default function Footer() {
             <h1 className="text-xl font-semibold py-2">Get in touch</h1>
             <div className="">
               <p className="text-base py-2">
-                Question ar feedback ? we'd love to hear from you.
+                Question ar feedback ? we&apos;d love to hear from you.
               </p>
               <input
                 type="text"
