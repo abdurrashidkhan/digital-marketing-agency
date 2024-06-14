@@ -1,32 +1,26 @@
-import AllUsers from "@/database/find/allUsers/AllUsers";
+import AdminApi from "@/database/find/allUsers/AdminApi";
 import Swal from "sweetalert2";
 
-export default async function CheckAdmin(email, signOut) {
+export default async function CheckAdmin(user, signOut) {
+  const email = user?.email;
   let isAdmin;
   if (email) {
-    isAdmin = await AllUsers(email);
+    isAdmin = await AdminApi(email);
+    if (isAdmin?.admin === true) {
+      Swal.fire({
+        title: "Admin Access Allowed",
+        icon: "success",
+      });
+    } else {
+      await signOut();
+      Swal.fire({
+        title: "Your are not admin",
+        icon: "info",
+      });
+    }
   } else {
     return;
   }
-  if (isAdmin === "admin") {
-    Swal.fire({
-      title: "Admin Access Allowed",
-      icon: "success",
-    });
-    console.log(isAdmin);
-  } else {
-    Swal.fire({
-      title: "Your are not admin",
-      icon: "info",
-    });
-    console.log(isAdmin);
-    await signOut();
-  }
-  // if (loading) {
-  //   return <Loading></Loading>;
-  // }
-  // if (error) {
-  //   console.log(error?.message);
-  // }
+
   return isAdmin;
 }
