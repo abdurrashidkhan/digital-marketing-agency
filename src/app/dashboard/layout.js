@@ -1,4 +1,5 @@
 "use client";
+import CheckingUser from "@/Components/Admin/checkingUser";
 import Footer from "@/Components/Footer/Footer";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -6,14 +7,15 @@ import { useState } from "react";
 import { HiMiniArrowRightOnRectangle } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
 import "./style.css";
-
-const layout = ({ children }) => {
+const Layout = ({ children }) => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const checkingUsers = CheckingUser();
   const dashboardRouting = [
     { path: "/dashboard", name: "Overview" },
     { path: "/dashboard/add-product", name: "Add Project" },
     { path: "/dashboard/manage-products", name: "Manage Projects" },
+    { path: "/dashboard/manage-users", name: "Manage users" },
   ];
   return (
     <>
@@ -53,12 +55,14 @@ const layout = ({ children }) => {
                   {dashboardRouting.map(({ path, name }) => (
                     <li key={path} className="px-3 py-1">
                       <Link
-                    exact={path === "/dashboard"}
-                    className={`${pathname === path ? 'text-[#20b820]' : ''}`}
-                    href={path}
-                  >
-                    {name}
-                  </Link>
+                        exact={path === "/dashboard"}
+                        className={`${
+                          pathname === path ? "text-[#20b820]" : ""
+                        }`}
+                        href={path}
+                      >
+                        {name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -72,7 +76,7 @@ const layout = ({ children }) => {
                 <li key={path} className="px-3 py-1">
                   <Link
                     exact={path === "/dashboard"}
-                    className={`${pathname === path ? 'text-[#20b820]' : ''}`}
+                    className={`${pathname === path ? "text-[#20b820]" : ""}`}
                     href={path}
                   >
                     {name}
@@ -95,4 +99,4 @@ const layout = ({ children }) => {
   );
 };
 
-export default layout;
+export default Layout;

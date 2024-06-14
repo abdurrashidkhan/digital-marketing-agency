@@ -1,7 +1,7 @@
 const manageProducts = () => {
   return (
     <div>
-      <h1>Manage Products</h1>
+      <h1>Manage services</h1>
     </div>
   );
 }

@@ -22,6 +22,7 @@ export default async function LoginWithGoogle() {
     accessToken: user?.user?.accessToken,
   };
   if (user) {
+    console.log(userInfo);
     await userInfoInsert(userInfo);
   }
 

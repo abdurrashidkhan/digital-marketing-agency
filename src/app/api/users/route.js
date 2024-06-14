@@ -14,6 +14,7 @@ export async function PUT(request) {
     emailVerified,
     photoURL,
     accessToken,
+    "role":"normal"
   };
   await connectMongodb();
   await users.findOneAndUpdate(updateDoc, filter, options, {
@@ -24,3 +25,16 @@ export async function PUT(request) {
     { status: 201 }
   );
 }
+
+
+
+// // one user find
+// export async function GET(request, { params }) {
+//   const { email } = params;
+//   // console.log(email)
+//   await connectMongodb();
+//   const allUsers = await users.find();
+//   console.log(allUsers)
+//   // const user = await users.findOne({ email:email });
+//   return NextResponse.json({ user }, { status: 200 });
+// }

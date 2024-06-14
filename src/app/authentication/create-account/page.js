@@ -6,6 +6,7 @@ import Loading from "@/app/loading";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import {
+  useAuthState,
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
@@ -14,7 +15,7 @@ import Swal from "sweetalert2";
 
 export default function SinUp() {
   const router = useRouter();
-  // const [cUser, cLoading, cError] = useAuthState(auth);
+  const [cUser, cLoading, cError] = useAuthState(auth);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile] = useUpdateProfile(auth);
@@ -61,20 +62,20 @@ export default function SinUp() {
     }
   };
   useEffect(() => {
-    if (user) {
+    if (user || cUser) {
+      router.push("/");
       Swal.fire({
         title: "Login success",
         icon: "success",
       });
-      router.push("/");
     }
-  }, [user]);
+  }, [user,router,cUser]);
 
 
-  if (loading) {
+  if (loading || cLoading) {
     return <Loading></Loading>;
   }
-  if (error) {
+  if (error || cError) {
     return console.log(error.message);
   }
   return (
