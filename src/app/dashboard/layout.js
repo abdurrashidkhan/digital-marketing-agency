@@ -10,7 +10,7 @@ import "./style.css";
 const Layout = ({ children }) => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const checkingUsers = CheckingUser();
+  const checkingUsers = CheckingUser(); // call checking user fund or not 
   const dashboardRouting = [
     { path: "/dashboard", name: "Overview" },
     { path: "/dashboard/add-product", name: "Add Project" },
