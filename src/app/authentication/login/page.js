@@ -1,6 +1,5 @@
 "use client";
 import LoginWithAll from "@/Components/authentication/LoginWithAll/LoginWithAll";
-import Error from "@/app/error";
 import { auth } from "@/app/firebase.init";
 import Loading from "@/app/loading";
 import { useRouter } from "next/navigation";
@@ -37,7 +36,7 @@ export default function Login() {
     return <Loading></Loading>;
   }
   if (error || xError) {
-    return <Error></Error>;
+    console.log(error || xError)
   }
   return (
     <section className="container mx-auto px-2 relative h-[100vh]">
