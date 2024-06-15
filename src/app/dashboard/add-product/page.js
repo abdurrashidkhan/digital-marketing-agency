@@ -105,7 +105,7 @@ const AddService = () => {
           const insertServices = insertService(service,seIsLoading,reset);
           
           // send service data to database
-          // const res = fetch("http://localhost:3000/api/service", {
+          // const res = fetch("/api/service", {
           //   method: "POST",
           //   headers: {
           //     "content-type": "application/json",

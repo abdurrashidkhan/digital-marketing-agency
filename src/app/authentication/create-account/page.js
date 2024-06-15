@@ -6,9 +6,9 @@ import Loading from "@/app/loading";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import {
-  useAuthState,
-  useCreateUserWithEmailAndPassword,
-  useUpdateProfile,
+    useAuthState,
+    useCreateUserWithEmailAndPassword,
+    useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -43,7 +43,7 @@ export default function SinUp() {
     if (e.userEmail) {
       try {
         // C:\projects\digital-marketing-agency\src\app\api\merge-marketing\v1\users\insert-user\[email].js
-        const res = await fetch(`http://localhost:3000/api/users/create-account/`, {
+        const res = await fetch(`/api/users/create-account/`, {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(userInfo),
