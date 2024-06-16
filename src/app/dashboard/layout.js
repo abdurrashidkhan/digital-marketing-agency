@@ -21,8 +21,10 @@ const Layout = ({ children }) => {
   const dashboardRouting = [
     { path: "/dashboard", name: "Overview" },
     { path: "/dashboard/add-services", name: "Add Services" },
+    { path: "/dashboard/add-project", name: "Add Project" },
     { path: "/dashboard/manage-services", name: "Manage Services" },
     { path: "/dashboard/manage-users", name: "Manage users" },
+    { path: "/dashboard/teammate", name: "Teammate " },
   ];
 
   useEffect(() => {
