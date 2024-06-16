@@ -1,22 +1,40 @@
 "use client";
+import CheckAdmin from "@/Components/Admin/CheckAdmin";
 import CheckingUser from "@/Components/Admin/checkingUser";
 import Footer from "@/Components/Footer/Footer";
+import { auth } from "@/app/firebase.init";
+import Loading from "@/app/loading";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { HiMiniArrowRightOnRectangle } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
 import "./style.css";
 const Layout = ({ children }) => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const checkingUsers = CheckingUser(); // call checking user fund or not 
+  const { admin, setAdmin } = useState(false);
+  const checkingUsers = CheckingUser(); // call checking user fund or not
+  const [user, loading, error] = useAuthState(auth);
+  const [signOut, outLoading, OutError] = useSignOut(auth);
   const dashboardRouting = [
     { path: "/dashboard", name: "Overview" },
-    { path: "/dashboard/add-product", name: "Add Project" },
-    { path: "/dashboard/manage-products", name: "Manage Projects" },
+    { path: "/dashboard/add-services", name: "Add Services" },
+    { path: "/dashboard/manage-services", name: "Manage Services" },
     { path: "/dashboard/manage-users", name: "Manage users" },
   ];
+
+  useEffect(() => {
+    CheckAdmin(user, signOut);
+  }, [user, signOut]);
+
+  if (loading || outLoading) {
+    return <Loading></Loading>;
+  }
+  if (error || OutError) {
+    console.log(error?.message);
+  }
   return (
     <>
       {/* <Navbar /> */}

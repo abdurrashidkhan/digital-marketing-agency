@@ -1,26 +1,32 @@
-import AdminApi from "@/database/find/allUsers/AdminApi";
 import Swal from "sweetalert2";
+
+const getAdmin = async (email) => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/users/${email}/`, {
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      throw new Error("failed to fetch admin");
+    }
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export default async function CheckAdmin(user, signOut) {
   const email = user?.email;
-  let isAdmin;
   if (email) {
-    isAdmin = await AdminApi(email);
-    if (isAdmin?.admin === true) {
-      Swal.fire({
-        title: "Admin Access Allowed",
-        icon: "success",
-      });
-    } else {
+    const { isAdmin } = await getAdmin(email);
+    console.log(isAdmin);
+    // setAdmin(isAdmin);
+    if (isAdmin !== true) {
       await signOut();
       Swal.fire({
         title: "Your are not admin",
         icon: "info",
       });
     }
-  } else {
-    return;
+    return isAdmin;
   }
-
-  return isAdmin;
 }

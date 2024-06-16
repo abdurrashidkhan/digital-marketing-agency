@@ -4,7 +4,7 @@ import { auth } from "@/app/firebase.init";
 import Loading from "@/app/loading";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 
-export default function ManageUsers() {
+export default function ManageServices() {
   const [user, loading, error] = useAuthState(auth);
   const [signOut, outLoading, OutError] = useSignOut(auth);
   const checkingUsers = CheckingUser();

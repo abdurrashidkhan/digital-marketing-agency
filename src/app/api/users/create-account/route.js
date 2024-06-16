@@ -17,9 +17,7 @@ export async function PUT(request) {
     "role":"normal"
   };
   await connectMongodb();
-  await users.findOneAndUpdate(updateDoc, filter, options, {
-    new: true,
-  });
+  await users.findOneAndUpdate(updateDoc, filter, options);
   return NextResponse.json(
     { message: "User Registered", status: true },
     { status: 201 }
