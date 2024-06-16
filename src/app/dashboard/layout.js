@@ -73,12 +73,12 @@ const Layout = ({ children }) => {
                 </div>
                 <ul className="" id="dashboard_mobile_items">
                   {dashboardRouting.map(({ path, name }) => (
-                    <li key={path} className="px-3 py-1">
+                    <li key={path} className="px-3 py-1  hover:bg-[#3333332f] mx-1 rounded">
                       <Link
                         exact={path === "/dashboard"}
                         className={`${
                           pathname === path ? "text-[#20b820]" : ""
-                        }`}
+                        } w-full`}
                         href={path}
                       >
                         {name}
@@ -93,10 +93,10 @@ const Layout = ({ children }) => {
           <aside className="hidden sm:block sm:w-[30%] bg-[#fff] dark:bg-[#122033] h-[100vh]  py-5 ease-in-out duration-700 rounded shadow-2xl drop-shadow-2xl">
             <ul className="mt-5">
               {dashboardRouting.map(({ path, name }) => (
-                <li key={path} className="px-3 py-1">
+                <li key={path} className="px-3 py-1 hover:bg-[#3333332f] mx-1 rounded">
                   <Link
                     exact={path === "/dashboard"}
-                    className={`${pathname === path ? "text-[#20b820]" : ""}`}
+                    className={`${pathname === path ? "text-[#20b820]" : ""} w-full`}
                     href={path}
                   >
                     {name}
