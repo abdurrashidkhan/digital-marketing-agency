@@ -13,10 +13,6 @@ const AddService = () => {
   const [user, loading, error] = useAuthState(auth);
   const [signOut, outLoading, OutError] = useSignOut(auth);
   const [isLoading, seIsLoading] = useState(false);
-  const [thimbleOne, setThimbleOne] = useState("");
-  const [thimbleTwo, setThimbleTwo] = useState("");
-  const [thimbleThree, setThimbleThree] = useState("");
-  const [thimbleFore, setThimbleFore] = useState("");
 
   useEffect(() => {
     CheckAdmin(user, signOut);

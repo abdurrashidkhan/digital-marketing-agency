@@ -18,7 +18,6 @@ export default async function CheckAdmin(user, signOut) {
   const email = user?.email;
   if (email) {
     const { isAdmin } = await getAdmin(email);
-    console.log(isAdmin);
     // setAdmin(isAdmin);
     if (isAdmin !== true) {
       await signOut();

@@ -1,23 +1,23 @@
+"use client"
 import CheckAdmin from "@/Components/Admin/CheckAdmin";
 import CheckingUser from "@/Components/Admin/checkingUser";
 import { auth } from "@/app/firebase.init";
 import Loading from "@/app/loading";
+import { useEffect } from "react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 
 export default function ManageUsers() {
   const [user, loading, error] = useAuthState(auth);
   const [signOut, outLoading, OutError] = useSignOut(auth);
   const checkingUsers = CheckingUser();
-  let isAdmin ;
+  useEffect(() => {
+    CheckAdmin(user, signOut);
+  }, [user, signOut]);
   if (loading || outLoading) {
     return <Loading></Loading>;
-  }else{
-    isAdmin = CheckAdmin(user,signOut)
   }
   if (error || OutError) {
     console.log(error?.message);
   }
-  return (
-    <div>Manage Users {isAdmin}</div>
-  )
+  return <div>Manage Users</div>;
 }
