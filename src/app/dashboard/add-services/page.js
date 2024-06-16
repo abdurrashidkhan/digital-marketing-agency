@@ -1,15 +1,27 @@
 "use client";
+import CheckAdmin from "@/Components/Admin/CheckAdmin";
+import { auth } from "@/app/firebase.init";
+import Loading from "@/app/loading";
 import insertService from "@/database/insert/insertService";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+
 // import './Upload.css'
 
 const AddService = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const [signOut, outLoading, OutError] = useSignOut(auth);
   const [isLoading, seIsLoading] = useState(false);
   const [thimbleOne, setThimbleOne] = useState("");
   const [thimbleTwo, setThimbleTwo] = useState("");
   const [thimbleThree, setThimbleThree] = useState("");
   const [thimbleFore, setThimbleFore] = useState("");
+
+  useEffect(() => {
+    CheckAdmin(user, signOut);
+  }, [user, signOut]);
+
   const {
     register,
     handleSubmit,
@@ -102,36 +114,16 @@ const AddService = () => {
             description: data.serviceDescription,
           };
           // console.log(service);
-          const insertServices = insertService(service,seIsLoading,reset);
-          
-          // send service data to database
-          // const res = fetch("/api/service", {
-          //   method: "POST",
-          //   headers: {
-          //     "content-type": "application/json",
-          //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          //   },
-          //   body: JSON.stringify(service),
-          // });
-          // console.log(res.OK)
-          // if (res.ok) {
-          //   Swal.fire("service add success", "", "success");
-          //   reset();
-          //   seIsLoading(false);
-          // }
-          // .then((res) => res.json())
-          // .then((inserted) => {
-          //   if (inserted.status) {
-          //     Swal.fire("service add success", "", "success");
-          //     reset();
-          //     seIsLoading(false);
-          //   }
-          // });
-          // console.log(service);
+          const insertServices = insertService(service, seIsLoading, reset);
         }
       });
   };
-
+  if (loading || outLoading) {
+    return <Loading></Loading>;
+  }
+  if (error || OutError) {
+    console.log(error?.message);
+  }
   return (
     <div className="w-[98%] h-auto mb-5">
       <div
