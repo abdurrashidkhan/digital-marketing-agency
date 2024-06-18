@@ -30,64 +30,12 @@ const {
 } = useForm();
 const onSubmit = (data) => {
   // loading start
-  seIsLoading(true);
+  // seIsLoading(true);
 
   // thimble
   const imgbbAPIKey = "0f140d3e8e7c284d126389c955a6ca33";
   const formData = new FormData();
   const url = `https://api.imgbb.com/1/upload?key=${imgbbAPIKey}`;
-
-  // const imageOne = data.imageOne[0];
-  // formData.append('imageOne', imageOne);
-  // fetch(url, {
-  //   method: 'POST',
-  //   body: formData
-  // })
-  //   .then(res => res.json())
-  //   .then(result => {
-  //     if (result.data.url) {
-  //       setThimbleOne(result.data.url)
-  //     }
-  //   })
-
-  // const imageTwo = data.imageTwo[0];
-  // formData.append('imageTwo', imageTwo);
-  // fetch(url, {
-  //   method: 'POST',
-  //   body: formData
-  // })
-  //   .then(res => res.json())
-  //   .then(result => {
-  //     if (result.data.url) {
-  //       setThimbleTwo(result.data.url)
-  //     }
-  //   })
-
-  // const imageThree = data.imageThree[0];
-  // formData.append('imageThree', imageThree);
-  // fetch(url, {
-  //   method: 'POST',
-  //   body: formData
-  // })
-  //   .then(res => res.json())
-  //   .then(result => {
-  //     if (result.data.url) {
-  //       setThimbleThree(result.data.url)
-  //     }
-  //   })
-
-  // const imageFore = data.imageFore[0];
-  // formData.append('imageFore', imageFore);
-  // fetch(url, {
-  //   method: 'POST',
-  //   body: formData
-  // })
-  //   .then(res => res.json())
-  //   .then(result => {
-  //     if (result.data.url) {
-  //       setThimbleFore(result.data.url)
-  //     }
-  //   })
 
   // end thimble
 
@@ -103,17 +51,17 @@ const onSubmit = (data) => {
       if (result.success) {
         const img = result.data.url;
         const project = {
-          projectsTitle: data.projectsTitle,
+          title: data.projectsTitle,
           projectDuration: data.projectDuration,
           categories: data.catagories,
           projectBeget: data.projectBeget,
           projectDiscount: data.projectDiscount,
           clientLocation: data.clientLocation,
+          projectBenefit:data.projectBenefit,
           image: img,
-          projectDescription: data.projectDescription,
+          description: data.projectDescription,
           // date: new Date(),
         };
-        // console.log(project);
         const insertProjects = projectInsert(project, seIsLoading, reset);
       }
     });
