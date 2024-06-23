@@ -9,3 +9,11 @@ export async function POST(request) {
   await service.create(data);
   return NextResponse.json({ message: "service upload" , status: true , status: 200 });
 }
+
+export async function GET(request) {
+  await connectMongodb();
+  const allService = await service.find({}).catch();
+  // console.log(allUser)
+  return NextResponse.json({allService});
+}
+

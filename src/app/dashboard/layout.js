@@ -22,8 +22,9 @@ const Layout = ({ children }) => {
     { path: "/dashboard", name: "Overview" },
     { path: "/dashboard/add-services", name: "Add Services" },
     { path: "/dashboard/add-project", name: "Add Project" },
-    { path: "/dashboard/teammate", name: "Teammate " },
+    // { path: "/dashboard/teammate", name: "Teammate " },
     { path: "/dashboard/manage-services", name: "Manage Services" },
+    { path: "/dashboard/manage-projects", name: "Manage Projects" },
     { path: "/dashboard/manage-users", name: "Manage Users" },
   ];
 

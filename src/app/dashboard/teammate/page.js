@@ -24,7 +24,6 @@ export default function Teammate() {
   // console.log(usersInfo);
   // data faceting
 
-
   if (loading || outLoading) {
     return <Loading></Loading>;
   }
@@ -34,7 +33,7 @@ export default function Teammate() {
   return (
     <div>
       <div className="overflow-x-auto">
-        <table className="table ">
+        <table className="table">
           {/* head */}
           <thead>
             <tr>
@@ -46,36 +45,34 @@ export default function Teammate() {
             </tr>
           </thead>
           <tbody>
-            {
-              usersInfo.map((user,index)=>
-                <tr key={user?._id}>
-              <th>{index +1}</th>
-              <td className="">{user?.displayName}</td>
-              <td className="">{user?.email}</td>
-              <select className="select select-none select-sm  bg-transparent focus:outline-none text-[#000] dark:text-[#fff]">
-                <option
-                  value={user?.role}
-                  className="bg-transparent dark:bg-[#122033]"
-                >
-                  {user?.role}
-                </option>
-                <option
-                  value={"seo-expert"}
-                  className="bg-transparent dark:bg-[#122033]"
-                >
-                  seo expert
-                </option>
-                <option
-                  value={"social-eng"}
-                  className="bg-transparent dark:bg-[#122033]"
-                >
-                  Social Eng
-                </option>
-              </select>
-              <td className="">Delete</td>
-            </tr>
-              )
-            }
+            {usersInfo.map((user, index) => (
+              <tr key={user?._id}>
+                <th>{index + 1}</th>
+                <td className="">{user?.displayName}</td>
+                <td className="">{user?.email}</td>
+                <select className="select select-none select-sm  bg-transparent focus:outline-none text-[#000] dark:text-[#fff]">
+                  <option
+                    value={user?.role}
+                    className="bg-transparent dark:bg-[#122033]"
+                  >
+                    {user?.role}
+                  </option>
+                  <option
+                    value={"seo-expert"}
+                    className="bg-transparent dark:bg-[#122033]"
+                  >
+                    Seo expert
+                  </option>
+                  <option
+                    value={"social-eng"}
+                    className="bg-transparent dark:bg-[#122033]"
+                  >
+                    Social Eng
+                  </option>
+                </select>
+                <td className="">Delete</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

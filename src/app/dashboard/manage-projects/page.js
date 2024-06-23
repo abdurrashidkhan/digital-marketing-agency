@@ -1,39 +1,38 @@
+
 "use client";
 import CheckAdmin from "@/Components/Admin/CheckAdmin";
 import CheckingUser from "@/Components/Admin/checkingUser";
 import { auth } from "@/app/firebase.init";
 import Loading from "@/app/loading";
-import uesDeleteService from "@/database/delete/useDeleteService";
-import uesAllServices from "@/database/find/allService/allService";
+import uesDeleteProject from "@/database/delete/uesDeleteProject";
+import uesAllProjects from "@/database/find/allProjects/useAllprojects";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
-export default function ManageServices() {
+export default function ManageProject() {
   const [user, loading, error] = useAuthState(auth);
   const [signOut, outLoading, OutError] = useSignOut(auth);
-  const [allServiceInfo, setServiceInfo] = useState([]);
-  const  [ IsLoading,setLoading] = useState(false)
+  const [allProjectsInfo, setServiceInfo] = useState([]);
   CheckingUser(); // call checking user fund or not
   // data faceting
-  const serviceInfo = async () => {
-    const { allService } = await uesAllServices();
-    setLoading(true)
-    setServiceInfo(allService);
-    setLoading(false)
+  const projectInfo = async () => {
+    const { allProjects } = await uesAllProjects();
+    console.log(allProjects)
+    setServiceInfo(allProjects);
   };
-  const deleteService = async (id)=>{
+  const deleteProject = async (id)=>{
     console.log(id)
-    const { allService } = await uesDeleteService(id);
-    console.log(allService)
+    const { allProjects } = await uesDeleteProject(id);
+    console.log(allProjects)
   }
   // data faceting
   useEffect(() => {
     CheckAdmin(user, signOut);
-    serviceInfo();
+    projectInfo();
   }, [user, signOut]);
   // data faceting
 
-  if (loading || outLoading || IsLoading) {
+  if (loading || outLoading) {
     return <Loading></Loading>;
   }
   if (error || OutError) {
@@ -55,7 +54,7 @@ export default function ManageServices() {
             </tr>
           </thead>
           <tbody>
-            {allServiceInfo.map((service, index) => (
+            {allProjectsInfo.map((service, index) => (
               <tr key={service?._id}>
                 <th>{index + 1}</th>
                 <td className="capitalize">{service?.title}</td>
@@ -66,7 +65,7 @@ export default function ManageServices() {
                   <Link href={`/service/${service?._id}`}>Prev View</Link>
                 </td>
                 <td className="capitalize">
-                  <button onClick={()=>deleteService(service?._id)}>Delete</button>
+                  <button onClick={()=>deleteProject(service?._id)}>Delete</button>
                 </td>
               </tr>
             ))}

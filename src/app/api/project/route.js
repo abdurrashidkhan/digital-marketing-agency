@@ -10,3 +10,12 @@ export async function POST(request) {
   await project.create(data);
   return NextResponse.json({ message: "project upload" , status: true , status: 200 });
 }
+
+
+export async function GET(request) {
+  await connectMongodb();
+  const allProjects = await project.find({}).catch();
+  // console.log(allUser)
+  return NextResponse.json({allProjects});
+}
+
