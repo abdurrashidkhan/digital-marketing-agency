@@ -8,24 +8,42 @@ import uesAllServices from "@/database/find/allService/allService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
+import Swal from "sweetalert2";
 export default function ManageServices() {
   const [user, loading, error] = useAuthState(auth);
   const [signOut, outLoading, OutError] = useSignOut(auth);
   const [allServiceInfo, setServiceInfo] = useState([]);
-  const  [ IsLoading,setLoading] = useState(false)
+  const [IsLoading, setLoading] = useState(false);
   CheckingUser(); // call checking user fund or not
   // data faceting
   const serviceInfo = async () => {
     const { allService } = await uesAllServices();
-    setLoading(true)
+    setLoading(true);
     setServiceInfo(allService);
-    setLoading(false)
+    setLoading(false);
   };
-  const deleteService = async (id)=>{
-    console.log(id)
-    const { allService } = await uesDeleteService(id);
-    console.log(allService)
-  }
+  const deleteService = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const res = uesDeleteService(id);
+        if (res?.status) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Service deleted.",
+            icon: "success"
+          });
+        }
+      }
+    });
+  };
   // data faceting
   useEffect(() => {
     CheckAdmin(user, signOut);
@@ -51,7 +69,12 @@ export default function ManageServices() {
               <th className="text-[#000] dark:text-[#fff] ">Date</th>
               <th className="text-[#000] dark:text-[#fff] ">Price</th>
               <th className="text-[#000] dark:text-[#fff] ">Categories</th>
-              <th colSpan={2} className="text-center text-[#000] dark:text-[#fff] ">Action</th>
+              <th
+                colSpan={2}
+                className="text-center text-[#000] dark:text-[#fff] "
+              >
+                Action
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -66,7 +89,9 @@ export default function ManageServices() {
                   <Link href={`/service/${service?._id}`}>Prev View</Link>
                 </td>
                 <td className="capitalize">
-                  <button onClick={()=>deleteService(service?._id)}>Delete</button>
+                  <button onClick={() => deleteService(service?._id)}>
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

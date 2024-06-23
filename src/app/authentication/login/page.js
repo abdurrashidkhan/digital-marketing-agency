@@ -24,7 +24,6 @@ export default function Login() {
   useEffect(() => {
     if (user || cUser) {
       router.push("/");
-      console.log(user)
       Swal.fire({
         title: "Login success",
         icon: "success",
