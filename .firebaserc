@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "e-merge-marketing"
-  }
+    "default": "digital-marketing-agency-30fa0",
+    "digital-marketing-agency-30fa0": "digital-marketing-agency-30fa0"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
