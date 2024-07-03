@@ -8,7 +8,10 @@ import uesAllServices from "@/database/find/allService/allService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
+import { FaRegEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
+
 export default function ManageServices() {
   const [user, loading, error] = useAuthState(auth);
   const [signOut, outLoading, OutError] = useSignOut(auth);
@@ -30,15 +33,15 @@ export default function ManageServices() {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
         const res = uesDeleteService(id);
-        if (res?.status) {
+        if (result?.status) {
           Swal.fire({
             title: "Deleted!",
             text: "Service deleted.",
-            icon: "success"
+            icon: "success",
           });
         }
       }
@@ -50,7 +53,6 @@ export default function ManageServices() {
     serviceInfo();
   }, [user, signOut]);
   // data faceting
-
   if (loading || outLoading || IsLoading) {
     return <Loading></Loading>;
   }
@@ -59,45 +61,55 @@ export default function ManageServices() {
   }
   return (
     <div>
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th className="text-[#000] dark:text-[#fff] ">No.</th>
-              <th className="text-[#000] dark:text-[#fff] ">Title</th>
-              <th className="text-[#000] dark:text-[#fff] ">Date</th>
-              <th className="text-[#000] dark:text-[#fff] ">Price</th>
-              <th className="text-[#000] dark:text-[#fff] ">Categories</th>
-              <th
-                colSpan={2}
-                className="text-center text-[#000] dark:text-[#fff] "
-              >
-                Action
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {allServiceInfo.map((service, index) => (
-              <tr key={service?._id}>
-                <th>{index + 1}</th>
-                <td className="capitalize">{service?.title}</td>
-                <td className="capitalize">{service?.date}</td>
-                <td className="capitalize">{service?.categories}</td>
-                <td className="capitalize">{service?.price}</td>
-                <td className="capitalize">
-                  <Link href={`/service/${service?._id}`}>Prev View</Link>
-                </td>
-                <td className="capitalize">
-                  <button onClick={() => deleteService(service?._id)}>
-                    Delete
-                  </button>
-                </td>
+      {allServiceInfo?.length > 0 ? (
+        <div className="overflow-x-auto">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th className="text-[#000] dark:text-[#fff] ">No.</th>
+                <th className="text-[#000] dark:text-[#fff] ">Title</th>
+                <th className="text-[#000] dark:text-[#fff] ">Date</th>
+                <th className="text-[#000] dark:text-[#fff] ">Price</th>
+                <th className="text-[#000] dark:text-[#fff] ">Categories</th>
+                <th
+                  colSpan={2}
+                  className="text-center text-[#000] dark:text-[#fff] "
+                >
+                  Action
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {allServiceInfo.map((service, index) => (
+                <tr key={service?._id}>
+                  <th>{index + 1}</th>
+                  <td className="capitalize">{service?.title}</td>
+                  <td className="capitalize">{service?.date}</td>
+                  <td className="capitalize">{service?.categories}</td>
+                  <td className="capitalize">{service?.price}</td>
+                  <td className="capitalize">
+                    <Link href={`/service/${service?._id}`}>
+                      <FaRegEdit className="text-xl text-[#158111]" />
+                    </Link>
+                  </td>
+                  <td className="capitalize">
+                    <button onClick={() => deleteService(service?._id)}>
+                      <MdDelete className="text-xl mt-1 text-red-800" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div className="">
+          <div className="content_center">
+            <h2>No Data Found...</h2>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
