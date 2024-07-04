@@ -20,8 +20,8 @@ export default function ManageServices() {
   CheckingUser(); // call checking user fund or not
   // data faceting
   const serviceInfo = async () => {
-    const { allService } = await uesAllServices();
     setLoading(true);
+    const { allService } = await uesAllServices();
     setServiceInfo(allService);
     setLoading(false);
   };
@@ -37,13 +37,12 @@ export default function ManageServices() {
     }).then((result) => {
       if (result.isConfirmed) {
         const res = uesDeleteService(id);
-        if (result?.status) {
-          Swal.fire({
-            title: "Deleted!",
-            text: "Service deleted.",
-            icon: "success",
-          });
-        }
+        // console.log(result)
+        Swal.fire({
+          title: "Deleted!",
+          text: "Service deleted.",
+          icon: "success",
+        });
       }
     });
   };
@@ -85,17 +84,17 @@ export default function ManageServices() {
                 <tr key={service?._id}>
                   <th>{index + 1}</th>
                   <td className="capitalize">{service?.title}</td>
-                  <td className="capitalize">{service?.date}</td>
+                  <td className="capitalize">{service?.date.slice(0, 10)}</td>
+                  <td className="capitalize">&#36;{service?.price}</td>
                   <td className="capitalize">{service?.categories}</td>
-                  <td className="capitalize">{service?.price}</td>
                   <td className="capitalize">
-                    <Link href={`/service/${service?._id}`}>
+                    <Link href={`/service/update/${service?._id}`}>
                       <FaRegEdit className="text-xl text-[#158111]" />
                     </Link>
                   </td>
                   <td className="capitalize">
                     <button onClick={() => deleteService(service?._id)}>
-                      <MdDelete className="text-xl mt-1 text-red-800" />
+                      <MdDelete className="text-xl mt-1 text-red-700" />
                     </button>
                   </td>
                 </tr>

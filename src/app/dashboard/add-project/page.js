@@ -30,7 +30,7 @@ const {
 } = useForm();
 const onSubmit = (data) => {
   // loading start
-  // seIsLoading(true);
+  seIsLoading(true);
 
   // thimble
   const imgbbAPIKey = "0f140d3e8e7c284d126389c955a6ca33";
@@ -58,6 +58,7 @@ const onSubmit = (data) => {
           projectDiscount: data.projectDiscount,
           clientLocation: data.clientLocation,
           projectBenefit:data.projectBenefit,
+          date: new Date(),
           image: img,
           description: data.projectDescription,
           // date: new Date(),

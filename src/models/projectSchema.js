@@ -6,6 +6,7 @@ const projectSchema = new Schema({
   description: { type: String, require: true },
   projectDuration:{type:String,require:true},
   projectBeget: {type:String,require:true},
+  date: { type: Date, require: true },
   clientLocation:{type:String , require:true},
   projectDiscount:{type:String , require:true},
   categories: { type: String, require: true },

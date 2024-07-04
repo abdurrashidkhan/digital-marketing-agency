@@ -16,12 +16,14 @@ export default function ManageProject() {
   const [user, loading, error] = useAuthState(auth);
   const [signOut, outLoading, OutError] = useSignOut(auth);
   const [allProjectsInfo, setProjectsInfo] = useState([]);
+  const [IsLoading, setLoading] = useState(false);
   CheckingUser(); // call checking user fund or not
   // data faceting
   const projectInfo = async () => {
+    setLoading(true);
     const { allProjects } = await uesAllProjects();
-    // console.log(allProjects.length)
     setProjectsInfo(allProjects);
+    setLoading(false);
   };
   const deleteProject = async (id) => {
     Swal.fire({
@@ -35,13 +37,11 @@ export default function ManageProject() {
     }).then((result) => {
       if (result.isConfirmed) {
         const res = uesDeleteProject(id);
-        if (res?.status) {
-          Swal.fire({
-            title: "Deleted!",
-            text: "Service deleted.",
-            icon: "success",
-          });
-        }
+        Swal.fire({
+          title: "Deleted!",
+          text: "Service deleted.",
+          icon: "success",
+        });
       }
     });
     // console.log(id)
@@ -53,10 +53,10 @@ export default function ManageProject() {
   useEffect(() => {
     CheckAdmin(user, signOut);
     projectInfo();
-  }, [user, signOut]);
+  }, [user, signOut,]);
   // data faceting
 
-  if (loading || outLoading) {
+  if (loading || outLoading || IsLoading) {
     return <Loading></Loading>;
   }
   if (error || OutError) {
@@ -92,13 +92,13 @@ export default function ManageProject() {
                   <td className="capitalize">{service?.categories}</td>
                   <td className="capitalize">{service?.price}</td>
                   <td className="capitalize">
-                    <Link href={`/service/${service?._id}`}>
-                    <FaRegEdit className="text-xl text-[#158111]" />
+                    <Link href={`/service/update/${service?._id}`}>
+                      <FaRegEdit className="text-xl text-[#158111]" />
                     </Link>
                   </td>
                   <td className="capitalize">
                     <button onClick={() => deleteProject(service?._id)}>
-                    <MdDelete className="text-xl mt-1 text-red-800" />
+                      <MdDelete className="text-xl mt-1 text-red-800" />
                     </button>
                   </td>
                 </tr>

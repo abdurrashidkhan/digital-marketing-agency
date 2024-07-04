@@ -43,13 +43,10 @@ const Layout = ({ children }) => {
       {/* <Navbar /> */}
       <div className="container mx-auto px-2  pt-[95px] sm:pt-[50px] ">
         {/* this content just small dives  */}
-        {/*  */}
-        {/*  */}
         {!open && (
           <div
             className="fixed text-5xl ease-in-out duration- z-[99] text-[#fff] hover:tooltip tooltip-open tooltip-right sm:hidden"
             id="dashboard_menu_icon"
-            data-tip="Menu"
           >
             <HiMiniArrowRightOnRectangle
               className="sm:hidden w-full h-[60px] py-5 p-2  rounded-r shadow-2xl drop-shadow-2xl bg-[#ccc9c9] dark:bg-[#122033] dark:text-[#fff] text-[#000]"
@@ -62,7 +59,7 @@ const Layout = ({ children }) => {
         <div className="flex gap-0 relative">
           {open && (
             <div className="">
-              <aside className="absolute sm:hidden w-[70%] bg-[#fff] dark:bg-[#122033] h-[100vh]  py-5 ease-in-out duration-700 top-[-10%] left-[0%]">
+              <aside className="absolute sm:hidden w-[70%] bg-[#fff] dark:bg-[#122033] h-[100vh]  py-5 ease-in-out duration-700 top-[-10%] left-[0%] z-[999]">
                 <div
                   className="absolute  text-red-700"
                   id="dashboard_close_icon"
@@ -108,7 +105,7 @@ const Layout = ({ children }) => {
           </aside>
           {/* main content show */}
           <div
-            className="w-[100%] bg-[#e7e4e4] dark:bg-[#0f1b2b] dark:text-[#fff] p-5 h-[100vh] mt-[-8%] sm:mt-0 rounded shadow-2xl  text-center sm:text-start pt-10 mb-5 overflow-auto"
+            className="w-[100%] bg-[#e7e4e4] dark:bg-[#0f1b2b] dark:text-[#fff] p-5 h-[100vh] mt-[-8%] sm:mt-0 rounded shadow-2xl  text-center sm:text-start pt-10 mb-5 overflow-auto md:relative"
             id="dashboard_content"
           >
             {children}

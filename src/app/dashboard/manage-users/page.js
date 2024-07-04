@@ -3,18 +3,24 @@ import CheckAdmin from "@/Components/Admin/CheckAdmin";
 import CheckingUser from "@/Components/Admin/checkingUser";
 import { auth } from "@/app/firebase.init";
 import Loading from "@/app/loading";
+import uesDeleteUser from "@/database/delete/uesDeleteUser";
 import uaeAllUserFind from "@/database/find/allUsers/uaeAllUserFind";
 import { useEffect, useState } from "react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
+import { MdDelete } from "react-icons/md";
+import Swal from "sweetalert2";
 export default function ManageUsers() {
   const [user, loading, error] = useAuthState(auth);
   const [signOut, outLoading, OutError] = useSignOut(auth);
   const [usersInfo, setUsersInfo] = useState([]);
+  const [isLoading, setLoading] = useState(false);
   CheckingUser(); // call checking user fund or not
   // data faceting
   const userInfo = async () => {
+    setLoading(true);
     const { allUser } = await uaeAllUserFind();
     setUsersInfo(allUser);
+    setLoading(false);
   };
   // data faceting
   useEffect(() => {
@@ -22,9 +28,28 @@ export default function ManageUsers() {
     userInfo();
   }, [user, signOut]);
   // console.log(usersInfo);
-  // data faceting
+  const deleteUser = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const res = uesDeleteUser(id);
+        Swal.fire({
+          title: "Deleted!",
+          text: "User deleted.",
+          icon: "success",
+        });
+      }
+    });
+  };
 
-  if (loading || outLoading) {
+  if (loading || outLoading || isLoading) {
     return <Loading></Loading>;
   }
   if (error || OutError) {
@@ -37,11 +62,13 @@ export default function ManageUsers() {
           {/* head */}
           <thead>
             <tr>
-              <th></th>
+              <th className="text-[#000] dark:text-[#fff] ">ID</th>
               <th className="text-[#000] dark:text-[#fff] ">Name</th>
               <th className="text-[#000] dark:text-[#fff] ">Email</th>
               <th className="text-[#000] dark:text-[#fff] ">Role</th>
-              <th className="text-[#000] dark:text-[#fff] ">Action</th>
+              <th className="text-[#000] dark:text-[#fff] text-center">
+                Action
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -71,7 +98,17 @@ export default function ManageUsers() {
                     Social Eng
                   </option>
                 </select> */}
-                <td className="">Delete</td>
+                <td className="text-center">
+                  {user?.role === "admin" ? (
+                    <button disabled>
+                      <MdDelete className="text-red-400  text-xl" />
+                    </button>
+                  ) : (
+                    <button onClick={() => deleteUser(user?._id)}>
+                      <MdDelete className="text-red-700 hover:text-red-800 duration-500 ease-in-out text-xl" />
+                    </button>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>
