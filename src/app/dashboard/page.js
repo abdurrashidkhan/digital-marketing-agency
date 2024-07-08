@@ -1,5 +1,6 @@
 "use client"
 import CheckingUser from "@/Components/Admin/checkingUser";
+import AllChart from "@/Components/Charts/AllChart";
 import { auth } from "@/app/firebase.init";
 import Loading from "@/app/loading";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
@@ -19,8 +20,7 @@ export default function Dashboard() {
   }
   return (
     <div className="">
-      <h1>Welcome to Dashboard</h1>
-      <h1 className="text-sm">Updating this route working</h1>
+      <AllChart />
     </div>
   )
 }

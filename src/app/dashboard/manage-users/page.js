@@ -72,11 +72,15 @@ export default function ManageUsers() {
             </tr>
           </thead>
           <tbody>
-            {usersInfo.map((user, index) => (
-              <tr key={user?._id}>
+            {usersInfo.map((users, index) => (
+              <tr key={users?._id}>
                 <th>{index + 1}</th>
-                <td className="">{user?.displayName}</td>
-                <td className="">{user?.email}</td>
+                <td className="">{users?.displayName}</td>
+                {
+                  user?.email === users?.email ? <td className="">{user?.email}</td>
+                  :
+                  <td className="">{user?.email.slice(0,5)}*******@gmail.com</td>
+                  }
                 <td className="">{user?.role}</td>
                 {/* <select className="select select-none select-sm  bg-transparent focus:outline-none text-[#000] dark:text-[#fff]">
                   <option
