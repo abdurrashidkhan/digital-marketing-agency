@@ -1,0 +1,21 @@
+#projects_banner {
+  background-image: linear-gradient(to bottom right, #005df33a, #ff00003d),
+    url("../../images/services/services-baner.jpg");
+  height: 50vh;
+  width: 100%;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.projects_banner_content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  -webkit-transform: translate(-50%, -45%);
+  -moz-transform: translate(-50%, -45%);
+  -ms-transform: translate(-50%, -45%);
+  -o-transform: translate(-50%, -45%);
+  overflow: hidden;
+}

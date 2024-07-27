@@ -1,9 +1,13 @@
-import Pricing from '@/Components/Pricing/Pricing'
+import Pricing from "@/Components/Pricing/Pricing";
+import PricingBanner from "@/Components/PricingBanner/PricingBanner";
 
 export default function PricingPage() {
   return (
-    <div className="container mx-auto py-10 ">
-      <Pricing/>
-    </div>
-  )
+    <section>
+      <PricingBanner/>
+      <div className="container mx-auto py-10 ">
+        <Pricing />
+      </div>
+    </section>
+  );
 }

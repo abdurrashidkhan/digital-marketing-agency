@@ -1,7 +1,7 @@
 export default function Pricing() {
   return (
     <section>
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-10">
         <div className="text-center py-10">
           <p className="text-[#20b820] text-base font-semibold">
             Our Pricing__

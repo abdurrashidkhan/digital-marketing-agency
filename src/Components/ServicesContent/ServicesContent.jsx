@@ -61,58 +61,65 @@ export default function ServicesContent() {
     },
   ];
   return (
-    <div className="main">
-      {/* services title */}
-      <div className="">
-        <div className="text-center">
-          <p className="text-[#20b820] text-base font-semibold">What we do__</p>
-          <h1 className="text-2xl font-semibold tracking-[1px] py-1 ">
-            Our Services
-          </h1>
-          <h3 className="text-base py-3 leading-[25px] tracking-[1px] ">
-            Dynamic digital marketing agency providing tailored solutions
-            including SEO, PPC, social media management, content creation, email
-            campaigns, web design, and analytics. Elevate your online presence,
-            engage audiences, and drive measurable results with our expertise.
-          </h3>
+    <div className="container mx-auto py-10">
+      <div className="main">
+        {/* services title */}
+        <div className="">
+          <div className="text-center">
+            <p className="text-[#20b820] text-base font-semibold">
+              What we do__
+            </p>
+            <h1 className="text-2xl font-semibold tracking-[1px] py-1 ">
+              Our Services
+            </h1>
+            <h3 className="text-base py-3 leading-[25px] tracking-[1px] ">
+              Dynamic digital marketing agency providing tailored solutions
+              including SEO, PPC, social media management, content creation,
+              email campaigns, web design, and analytics. Elevate your online
+              presence, engage audiences, and drive measurable results with our
+              expertise.
+            </h3>
+          </div>
         </div>
-      </div>
-      {/* serves */}
-      <div className="">
-        {/* social marketing */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center gap-3 my-6">
-          {services.map((s) => (
-            <div
-              className="bg-[#fff] dark:bg-[#101b2b] rounded shadow-2xl px-2 py-3"
-              key={s.image}
-            >
-              {/* services icons */}
-              <div className="mt-3">
-                <Image
-                  className="mx-auto p-[3px] mb-8 "
-                  loading="lazy"
-                  // placeholder="blur"
-                  src={s.image}
-                  width={100}
-                  height={100}
-                  alt="Picture of the author"
-                />
+        {/* serves */}
+        <div className="">
+          {/* social marketing */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center gap-3 my-6">
+            {services.map((s) => (
+              <div
+                className="bg-[#fff] dark:bg-[#101b2b] rounded shadow-2xl px-2 py-3"
+                key={s.image}
+              >
+                {/* services icons */}
+                <div className="mt-3">
+                  <Image
+                    className="mx-auto p-[3px] mb-8 "
+                    loading="lazy"
+                    // placeholder="blur"
+                    src={s.image}
+                    width={100}
+                    height={100}
+                    alt="Picture of the author"
+                  />
+                </div>
+                {/* content */}
+                <div className="">
+                  <h1 className="text-xl font-medium">
+                    {s.title.slice(0, 30)}
+                  </h1>
+                  <p className="py-3 text-base text-start">
+                    {s.description.slice(0, 100)}
+                  </p>
+                  <Link
+                    href={"/social-media-marketing"}
+                    className="bg-[#17a82b] w-full inline-block text-center rounded shadow-2xl py-1 tracking-[1px] text-[#fff] hover:bg-[#158a24] ease-in-out duration-500"
+                  >
+                    read more
+                  </Link>
+                </div>
               </div>
-              {/* content */}
-              <div className="">
-                <h1 className="text-xl font-medium">{s.title.slice(0, 30)}</h1>
-                <p className="py-3 text-base text-start">
-                  {s.description.slice(0, 100)}
-                </p>
-                <Link
-                  href={"/social-media-marketing"}
-                  className="bg-[#17a82b] w-full inline-block text-center rounded shadow-2xl py-1 tracking-[1px] text-[#fff] hover:bg-[#158a24] ease-in-out duration-500"
-                >
-                  read more
-                </Link>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
