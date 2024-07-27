@@ -1,17 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "lh3.googleusercontent.com"
+        hostname: "lh3.googleusercontent.com",
       },
       {
         protocol: "https",
-        hostname: "graph.facebook.com"
+        hostname: "graph.facebook.com",
       },
     ],
+  },
+  webpack: (config, { isServer }) => {
+    // Add your custom webpack configurations if needed
+    return config;
   },
 };
 

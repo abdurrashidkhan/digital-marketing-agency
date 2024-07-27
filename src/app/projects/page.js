@@ -10,7 +10,7 @@ export default function Projects() {
   ]
   return (
     <section>
-      <div className="container mx-auto px-2 py-10">
+      <div className="container mx-auto px-2 py-14">
         <div className="">
           <div className="text-center">
             <p className="text-[#20b820] font-semibold">Our Prevues Projects__</p>

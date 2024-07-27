@@ -1,3 +1,4 @@
+// welcome to dashboard
 "use client"
 import CheckingUser from "@/Components/Admin/checkingUser";
 import AllChart from "@/Components/Charts/AllChart";
