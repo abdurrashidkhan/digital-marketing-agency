@@ -30,7 +30,6 @@ export default function Navbar() {
     { path: "/pricing", name: "Pricing" },
     // { path: "/offer", name: "Get Offer" },
     { path: "/contact", name: "Contact us" },
-    { path: "/about", name: "About" },
   ];
 
   if (error || OutError) {
