@@ -1,9 +1,9 @@
 
 export default function Loading() {
   return (
-    <div className="">
+    <div className="z-[999999]">
       <div className="content_center">
-      <div className="loader"></div>
+        <div className="loader"></div>
       </div>
     </div>
   )
