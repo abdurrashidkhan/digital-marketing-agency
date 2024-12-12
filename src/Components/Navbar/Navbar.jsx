@@ -99,7 +99,11 @@ export default function Navbar() {
                 <li key={path} className="px-3 py-1">
                   <Link
                     exact={path === "/dashboard"}
-                    className={`${pathname === path ? "text-[#20b820]" : ""}`}
+                    className={`${
+                      pathname === path
+                        ? "text-[#20b820]"
+                        : "dark:text-[#fff] text-[#000]"
+                    } focus:text-[#20b820]`}
                     href={path}
                   >
                     {name}
