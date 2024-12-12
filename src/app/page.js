@@ -6,7 +6,7 @@ import Pricing from "@/Components/Pricing/Pricing";
 import ServicesContent from "@/Components/ServicesContent/ServicesContent";
 import Subscribe from "@/Components/Subscribe/Subscribe";
 import Team from "@/Components/Team/Team";
-import WorkingProcess from "@/Components/workingProcess/WorkingProcess";
+import WorkingProcess from "@/Components/WorkingProcess/WorkingProcess";
 
 
 export default function Home() {
