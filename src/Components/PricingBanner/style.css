@@ -1,9 +1,9 @@
 #pricing_banner {
   background-image: linear-gradient(to bottom right, #005df33a, #ff00003d),
     url("../../images/packages.jpg");
-  height: 50vh;
+
   width: 100%;
-  background-position: top;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;

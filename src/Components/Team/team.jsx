@@ -14,8 +14,8 @@ export default function Team() {
                 // placeholder="blur"
                 src={teamImage}
                 alt="loading"
-                width={600}
-                height={600}
+                width={500}
+                height={500}
               />
             </div>
             <div className="px-5">

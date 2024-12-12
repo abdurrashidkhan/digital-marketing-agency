@@ -15,7 +15,7 @@ export default function Projects() {
       <ProjectsBanner />
       <div className="container mx-auto px-2 py-10">
         <div className="">
-          <div className="text-center">
+          {/* <div className="text-center">
             <p className="text-[#20b820] font-semibold">
               Our Prevues Projects__
             </p>
@@ -27,7 +27,7 @@ export default function Projects() {
               Marketing Solutions! Elevate Your Brand, Increase Visibility, and
               Drive Sales with Our Expert Services Today!
             </p>
-          </div>
+          </div> */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             <div className=" bg-[#fff] dark:bg-[#192536] shadow-2xl rounded">
               {/* content */}

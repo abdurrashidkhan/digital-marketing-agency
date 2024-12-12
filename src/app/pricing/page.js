@@ -4,8 +4,8 @@ import PricingBanner from "@/Components/PricingBanner/PricingBanner";
 export default function PricingPage() {
   return (
     <section>
-      <PricingBanner/>
-      <div className="container mx-auto py-10 ">
+      <PricingBanner />
+      <div className="container mx-auto pb-10 ">
         <Pricing />
       </div>
     </section>
