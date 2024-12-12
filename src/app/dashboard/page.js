@@ -10,11 +10,11 @@ export default function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
   const [signOut, outLoading, OutError] = useSignOut(auth);
   const checkingUsers = CheckingUser();
-  let isAdmin ;
+  let isAdmin;
   if (loading || outLoading) {
     return <Loading></Loading>;
-  }else{
-    // isAdmin = CheckAdmin()
+  } else {
+    isAdmin = CheckAdmin()
   }
   if (error || OutError) {
     console.log(error?.message);

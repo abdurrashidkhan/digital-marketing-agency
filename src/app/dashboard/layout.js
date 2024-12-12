@@ -51,7 +51,7 @@ const Layout = ({ children }) => {
             <HiMiniArrowRightOnRectangle
               className="sm:hidden w-full h-[60px] py-5 p-2  rounded-r shadow-2xl drop-shadow-2xl bg-[#ccc9c9] dark:bg-[#122033] dark:text-[#fff] text-[#000]"
               onClick={() => setOpen(true)}
-              // id="dashboard_menu_open_icon"
+            // id="dashboard_menu_open_icon"
             />
           </div>
         )}
@@ -74,9 +74,8 @@ const Layout = ({ children }) => {
                     <li key={path} className="px-3 py-1  hover:bg-[#3333332f] mx-1 rounded">
                       <Link
                         exact={path === "/dashboard"}
-                        className={`${
-                          pathname === path ? "text-[#20b820]" : ""
-                        } w-full`}
+                        className={`${pathname === path ? "text-[#20b820]" : ""
+                          } w-full`}
                         href={path}
                       >
                         {name}
