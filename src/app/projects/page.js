@@ -13,7 +13,7 @@ export default function Projects() {
   return (
     <section>
       <ProjectsBanner />
-      <div className="container mx-auto px-2 py-10">
+      <div className="container mx-auto px-2 p-10">
         <div className="">
           {/* <div className="text-center">
             <p className="text-[#20b820] font-semibold">

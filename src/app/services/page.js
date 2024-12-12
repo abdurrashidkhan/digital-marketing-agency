@@ -5,7 +5,7 @@ export default function Services() {
   return (
     <section className="">
       <OurServicesBanner />
-      <div className="container mx-auto  py-10 w-[100%]    overflow-hidden z-[99] relative">
+      <div className="container mx-auto  pb-10 w-[100%]    overflow-hidden z-[99] relative">
         <ServicesContent />
         {/*  */}
         {/* <div id="services_blur_color"></div> */}
